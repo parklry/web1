@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>HTML test</title>
+<style type="text/css">
+* { margin:0; padding:0; color:#000000; }
+
+table { border-collapse:collapse; }
+
+.table_btn { width:100%; background-color:#3971ae; border:#999999 solid 1px; border-bottom:none; }
+.table_btn th { height:30px; font-weight:bold; color:#ffffff; text-align:left; padding-left:2px; }
+.table_btn td { padding-left:2px; }
+
+.table_opt { width:100%; background-color:#dfdfdf; }
+.table_opt th { width:80px; height:24px; border:#999999 solid 1px; text-align:center; font-weight:bold; }
+.table_opt td { background-color:#eeeeee; border:#999999 solid 1px; padding-left:2px; }
+
+.table_tit { width:100%; background-color:#dfdfdf; border:#999999 solid 1px; }
+.table_tit td { height:24px; border:#999999 solid 1px; padding-left:2px; text-align:center; }
+
+.table_tot { width:100%; background-color:#d2d2d2; border:#999999 solid 1px; }
+.table_tot td { height:24px; border:#999999 solid 1px; padding-left:2px; }
+.table_tot tr:first-child td { border-top:none; }
+
+/* 버튼스타일 */
+.btn {
+  display: inline-block;
+  padding: 0px 5px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 11px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+}
+
+.btn:active,
+.btn.active {
+  background-color: #cccccc \9;
+}
+
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  transition: background-position 0.1s linear;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn.active,
+.btn:active {
+  background-image: none;
+  outline: 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+}
+</style>
+<script>
+</script>
+</head>
+
+<body onload="" style="padding:5px;">
+<div>
+<table style="width:700px;">
+    <tr>
+        <td>
+            <table class="table_btn">
+                <tr>
+                    <th>공지사항, 게시판</th>
+                    <td style="text-align:right;padding:2px;">
+                        <button class="btn" style="height:24px;">검색</button>
+                        <button class="btn" style="height:24px;">작성</button>
+                        <button class="btn" disabled style="height:24px;">회람</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table class="table_opt">
+                <tr>
+                    <th>회람</th>
+                    <td></td>
+                    <th>공지</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>안내</th>
+                    <td></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+<div style="margin-top:1px;">
+<table style="width:700px;" class="table_tit">
+    <tr>
+        <td>번호</td>
+        <td>날자</td>
+        <td>구분</td>
+        <td>제목</td>
+        <td>확인</td>
+    </tr>
+</table>
+</div>
+<iframe style="margin-top:1px; width:717px; height:400px; min-height:200px; border:none;" onload="" src="holidaySearchTestPrt.jsp" id="myframe"></iframe>
+<div id="bar_sum" style="margin-top:0px;">
+<table style="width:700px;" class="table_tot">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+<script>
+function resizeIframe(iframe,sumbar,subadd) {
+    const win_height = window.innerHeight;
+    const bar_height = document.getElementById(sumbar).clientHeight;
+    document.getElementById(iframe).style.height = (win_height - document.getElementById(iframe).getBoundingClientRect().top - bar_height - subadd) + 'px';
+}
+window.onresize = function() { resizeIframe("myframe","bar_sum",20); }
+resizeIframe("myframe","bar_sum",20);
+</script>
+</html>
+        
