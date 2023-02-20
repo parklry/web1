@@ -4,25 +4,42 @@
         <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
         <title></title>
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>                
+        <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <style type="text/css">
         * { margin:0; padding:0; color:#000000; }
         table { border-collapse:collapse; }
         td { border:#999999 solid 1px; }
+        .ui-tooltip {
+            margin-left: 10px;
+            /*background: #3971ae;*/
+            border: 1px solid #000;
+            /*border-radius: 10px;*/
+            padding: auto;
+            /*color: white;*/
+            font-size: 12px;
+            font-family: 굴림체;
+            /*text-transform: uppercase;*/
+            /*box-shadow: 0 0 7px black;*/
+        }
         </style>
         <script>
-        $(function() {
-                $( document ).tooltip();
-        });
+            $(function() {
+                $( document ).tooltip({
+                    content: function() {
+                        return $( this ).prop( "title" );
+                    },
+                    track: true,
+                });
+            });
         </script>
         </head>
 
         <body onload="">
 <table style="width:700px;">
     
-    <tr style="height:20px;" title="1111111111">
+    <tr style="height:20px;" title="00000<br>00000">
         <td></td>
         <td></td>
         <td></td>
@@ -30,7 +47,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;" title="2222222222">
+    <tr style="height:20px;" title="11111<br>11111">
         <td></td>
         <td></td>
         <td></td>
@@ -38,7 +55,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="22222<br>22222">
         <td></td>
         <td></td>
         <td></td>
@@ -46,7 +63,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="33333<br>33333">
         <td></td>
         <td></td>
         <td></td>
@@ -54,7 +71,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="44444<br>44444">
         <td></td>
         <td></td>
         <td></td>
@@ -62,7 +79,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="55555<br>55555">
         <td></td>
         <td></td>
         <td></td>
@@ -70,7 +87,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="66666<br>66666">
         <td></td>
         <td></td>
         <td></td>
@@ -78,7 +95,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="77777<br>77777">
         <td></td>
         <td></td>
         <td></td>
@@ -86,7 +103,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="88888<br>88888">
         <td></td>
         <td></td>
         <td></td>
@@ -94,7 +111,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="99999<br>99999">
         <td></td>
         <td></td>
         <td></td>
@@ -102,7 +119,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1010101010<br>1010101010">
         <td></td>
         <td></td>
         <td></td>
@@ -110,7 +127,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1111111111<br>1111111111">
         <td></td>
         <td></td>
         <td></td>
@@ -118,7 +135,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1212121212<br>1212121212">
         <td></td>
         <td></td>
         <td></td>
@@ -126,7 +143,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1313131313<br>1313131313">
         <td></td>
         <td></td>
         <td></td>
@@ -134,7 +151,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1414141414<br>1414141414">
         <td></td>
         <td></td>
         <td></td>
@@ -142,7 +159,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1515151515<br>1515151515">
         <td></td>
         <td></td>
         <td></td>
@@ -150,7 +167,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1616161616<br>1616161616">
         <td></td>
         <td></td>
         <td></td>
@@ -158,7 +175,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1717171717<br>1717171717">
         <td></td>
         <td></td>
         <td></td>
@@ -166,7 +183,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1818181818<br>1818181818">
         <td></td>
         <td></td>
         <td></td>
@@ -174,7 +191,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="1919191919<br>1919191919">
         <td></td>
         <td></td>
         <td></td>
@@ -182,7 +199,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2020202020<br>2020202020">
         <td></td>
         <td></td>
         <td></td>
@@ -190,7 +207,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2121212121<br>2121212121">
         <td></td>
         <td></td>
         <td></td>
@@ -198,7 +215,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2222222222<br>2222222222">
         <td></td>
         <td></td>
         <td></td>
@@ -206,7 +223,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2323232323<br>2323232323">
         <td></td>
         <td></td>
         <td></td>
@@ -214,7 +231,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2424242424<br>2424242424">
         <td></td>
         <td></td>
         <td></td>
@@ -222,7 +239,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2525252525<br>2525252525">
         <td></td>
         <td></td>
         <td></td>
@@ -230,7 +247,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2626262626<br>2626262626">
         <td></td>
         <td></td>
         <td></td>
@@ -238,7 +255,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2727272727<br>2727272727">
         <td></td>
         <td></td>
         <td></td>
@@ -246,7 +263,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2828282828<br>2828282828">
         <td></td>
         <td></td>
         <td></td>
@@ -254,7 +271,7 @@
         <td></td>
     </tr>
     
-    <tr style="height:20px;">
+    <tr style="height:20px;" title="2929292929<br>2929292929">
         <td></td>
         <td></td>
         <td></td>
@@ -263,6 +280,6 @@
     </tr>
     
 </table>
-        
+                </body>
         </html>
         
