@@ -1,24 +1,9 @@
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <title></title>
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
 * { margin:0; padding:0; color:#000000; }
 table { border-collapse:collapse; }
@@ -31,9 +16,10 @@ td { border:#999999 solid 1px; }
 
 <body onload="">
 
-<button type="button" id="prt">Print</button>
+<button type="button" id="prt" onclick="myframe.Print('prt');">Prt</button>
+<button type="button" id="pdf" onclick="myframe.Print('pdf');">PDF</button>
+<br>
+<iframe style="margin-top:1px; width:700px; height:100px; border:none;" onload="" src="print_R.html" id="myframe" name="myframe"></iframe>
 
-<iframe style="margin-top:1px; width:0px; height:0px; border:none;" onload="" src="print_R.html" id="myframe"></iframe>
-    </body>
+</body>
 </html>
-        
