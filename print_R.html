@@ -26,7 +26,6 @@ td { border:#999999 solid 1px; }
     html, body { -webkit-print-color-adjust:exact; width:210mm; height: 297mm; }
     table { page-break-inside: auto; }
     tr { page-break-inside: avoid; page-break-after: auto; }
-    .page-divide { page-break-after: always; }
     @page { margin: 0; }
     body { margin: 1.6cm; }
 }
@@ -68,7 +67,7 @@ for(var p=0; p<30; p++){
     document.write('    </tr>');
     }
     document.write('</table>');
-    document.write('<div class="page-divide"></div>');
+    document.write('<div style="page-break-after: always;"></div>');
 }
 </script>
 </body>
