@@ -1,14 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 <title></title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style type="text/css">
 * { margin:0; padding:0; color:#000000; }
 table { border-collapse:collapse; }
 td { border:#999999 solid 1px; }
 @media print {
+    html, body { -webkit-print-color-adjust:exact; width:210mm; height: 297mm; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
     .page-divide { page-break-after: always; }
     @page { margin: 0; }
     body { margin: 1.6cm; }
@@ -16,13 +33,29 @@ td { border:#999999 solid 1px; }
 table { page-break-inside: avoid; }
 </style>
 <script>
-window.onload = function() { window.print(); }
+//window.onload = function() { window.print(); }
+function Print(gubun){
+    if(gubun == 'prt'){
+        window.print();
+    }else{
+        let opt = {
+            margin: 5,
+            filename: 'filename.pdf',
+            image: { type:'jpeg', quality: 0.98 },
+            pagebreak: { mode:'css', avoid: 'div,p' },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'p' }
+        };
+
+        html2pdf().set(opt).from(document.documentElement.innerHTML).save();
+    }
+}
 </script>
 </head>
 
 <body>
 <script>
-for(var p=0; p<100; p++){
+for(var p=0; p<30; p++){
     document.write('<div style="height:80px;margin-top:40px;">'+(p+1)+' 페이지</div>');
     document.write('<table style="width:700px;">');
     for(var i=0; i<30; i++){ var strA = ""; for(var j=0; j<5; j++){ strA += i; }
@@ -40,3 +73,4 @@ for(var p=0; p<100; p++){
 </script>
 </body>
 </html>
+        
