@@ -12,16 +12,40 @@
         table { border-collapse:collapse; }
         td { border:#999999 solid 1px; }
         .ui-tooltip {
-            margin-left: 10px;
-            /*background: #3971ae;*/
+            /*margin-left: 35px;*/
+            background: #e8fbf0;
             border: 1px solid #000;
-            /*border-radius: 10px;*/
+            border-radius: 5px;
             padding: auto;
             /*color: white;*/
+            color: #ff0000;
             font-size: 12px;
             font-family: 굴림체;
             /*text-transform: uppercase;*/
             /*box-shadow: 0 0 7px black;*/
+            /*padding: 5px 10px;*/
+            /*color: #fff;*/
+            /*background-color: #000;*/
+            /*position: relative;*/
+        }
+        .ui-tooltip-error {
+            background: #ffff00;
+            border: 1px solid #000;
+            padding: auto;
+            color: #ff0000;
+            font-size: 12px;
+            font-family: 굴림체;
+        }
+        /* 방향표시 스타일 설정 */
+        .ui-tooltip:after, .ui-tooltip-error:after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #e8fbf0 transparent transparent;
+            left: -10px;
+            top: 50%;
+            margin-top: -10px;
         }
 /* tooltip 개행 */
 .ui-tooltip {
@@ -87,6 +111,7 @@
                         return $( this ).prop( "title" );
                     },
                     track: true,
+                        position: { my: "left+20 top", at: "right center" }
                 });
             });
 /*
