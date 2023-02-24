@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<title></title>
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/js/html2canvas.js"></script>
+<script src="/js/jspdf.min.js"></script>
+<style type="text/css">
+* { margin:0; padding:0; color:#000000; }
+table { border-collapse:collapse; }
+td { border:#999999 solid 1px; }
+</style>
+<script>
+$(document).ready(function() {
+	$('#savePdf').click(function() { // pdf저장 button id
+		
+	    html2canvas($('#pdfDiv')[0]).then(function(canvas) { //저장 영역 div id
+		
+	    // 캔버스를 이미지로 변환
+	    var imgData = canvas.toDataURL('image/png');
+		     
+	    var imgWidth = 190; // 이미지 가로 길이(mm) / A4 기준 210mm
+	    var pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
+	    var imgHeight = canvas.height * imgWidth / canvas.width;
+	    var heightLeft = imgHeight;
+	    var margin = 10; // 출력 페이지 여백설정
+	    var doc = new jsPDF('p', 'mm');
+	    var position = 0;
+	       
+	    // 첫 페이지 출력
+	    doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+	    heightLeft -= pageHeight;
+	         
+	    // 한 페이지 이상일 경우 루프 돌면서 출력
+	    while (heightLeft >= 20) {
+	        position = heightLeft - imgHeight;
+	        doc.addPage();
+	        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+	        heightLeft -= pageHeight;
+	    }
+	 
+	    // 파일 저장
+	    doc.save('file-name.pdf');
+	});
+	});
+})
+</script>        
+</head>
+
+<body onload="">
+<button type="button" class="btn btn-primary" id="savePdf" >PDF 저장</button>
+<div id="pdfDiv">
+<table style="width:700px;">
+    
+    <tr style="height:20px;" title="00000<br>00000">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="11111<br>11111">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="22222<br>22222">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="33333<br>33333">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="44444<br>44444">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="55555<br>55555">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="66666<br>66666">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="77777<br>77777">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="88888<br>88888">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="99999<br>99999">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1010101010<br>1010101010">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1111111111<br>1111111111">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1212121212<br>1212121212">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1313131313<br>1313131313">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1414141414<br>1414141414">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1515151515<br>1515151515">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1616161616<br>1616161616">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1717171717<br>1717171717">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1818181818<br>1818181818">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="1919191919<br>1919191919">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2020202020<br>2020202020">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2121212121<br>2121212121">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2222222222<br>2222222222">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2323232323<br>2323232323">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2424242424<br>2424242424">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2525252525<br>2525252525">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2626262626<br>2626262626">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2727272727<br>2727272727">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2828282828<br>2828282828">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+    <tr style="height:20px;" title="2929292929<br>2929292929">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    
+</table>
+</div>
+
+</body>
+</html>
+        
