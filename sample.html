@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>HTML test</title>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <!--<link rel="stylesheet" href="jquery-ui.min.css">-->
 <!--<script src="jquery-1.12.2.min.js"></script>-->
 <!--<script src="jquery-ui.min.js"></script>-->
@@ -129,7 +129,11 @@ $( function() {
                     <th>회람</th>
                     <td><input type="text" value="aaaaaa"></td>
                     <th>공지</th>
-                    <td><input type="checkbox" value="1" checked></td>
+                    <td><input type="checkbox" value="1" checked>
+        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYY-MM-DD" tabindex="101" /> ~
+        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeEndDate" class="datepicker2" id="datepicker2" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYY-MM-DD" tabindex="102" />
+        <a href="#;" onClick="checkDateRange(dateForm.johaeStartDate,dateForm.johaeEndDate);">[체크]</a>
+                    </td>
                 </tr>
                 <tr>
                     <th>안내</th>
@@ -144,6 +148,8 @@ $( function() {
                             <option>b</option>
                             <option>c</option>
                         </select>
+                        <input style="width:80px; text-align:center;" type="text" oninput="autoDash(this,6);" name="johaeMonth" class="monthPicker" id="monthPicker" size="5" maxlength="7" value="" autocomplete="off" placeholder="YYYY-MM" />
+                        <a href="#;" onClick="alert(checkValidDate(dateForm.johaeMonth.value));">[체크]</a>
                     </td>
                 </tr>
             </table>
@@ -151,6 +157,240 @@ $( function() {
     </tr>
 </table>
 </div>
+<style>
+            .ui-datepicker-trigger { margin-left:1px; }
+        </style>
+        <script>
+        var setDatepicker={
+            yearRange: "c-5:c+2",
+            yearSuffix: "년",
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            showButtonPanel: true,
+            closeText: "닫기",
+            //showOn: "both", // both, button
+            //buttonText: "달력",
+            //buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+            //buttonImage: "https://img.icons8.com/small/2x/calendar.png",
+        };
+
+        $(function() {
+            $( "#datepicker1" ).datepicker(setDatepicker);
+            $( "#datepicker2" ).datepicker(setDatepicker);
+        });
+
+        var setMonthpicker={
+            yearRange: "c-5:c+2",
+            yearSuffix: "년",
+            dateFormat: 'yy-mm',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            showOn: "button",
+            buttonText: "달력",
+
+            onClose: function(dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).val($.datepicker.formatDate('yy-mm', new Date(year, month, 1)));
+            },
+        };
+
+        $(function() {
+            var varMonth = "#monthPicker";
+            //setMonthpicker.defaultDate = new Date($("#monthPicker").val()),
+            setMonthpicker.beforeShow = function(){
+                var selectDate = $( varMonth ).val().replace(/-/g,"");
+                if(selectDate.length == 6){
+                    var year = Number(selectDate.substring(0,4));
+                    var month = Number(selectDate.substring(4,6))-1;
+                    $(this).datepicker("option","defaultDate",new Date(year, month, 1));
+                }
+            }
+            $( varMonth ).datepicker(setMonthpicker);
+        });
+
+function autoDash(date,max) {
+//function onInputHandler(date) {
+    let val = date.value.replace(/\D/g, ""); // \D : 숫자가 아닌것
+    let leng = val.length;
+    let result = "";
+
+    if(leng < 6){
+        result = val;
+    }else if(leng < 8){
+        result += val.substring(0,4);
+        result += "-";
+        result += val.substring(4);
+    }else{
+        result += val.substring(0,4);
+        result += "-";
+        result += val.substring(4,6);
+        result += "-";
+        result += val.substring(6);
+    }
+    date.value = result;
+    if(leng == max && !checkValidDate(result)){
+        alert("유효하지 않은 날짜입니다.");
+        date.select();
+        date.focus();
+    }
+}
+
+function checkValidDate(date) {
+    //alert(Date.parse(date));
+    //return isNaN(Date.parse(date));
+
+    let result = true;
+    try {
+        let val = date.replace(/\D/g, ""); // \D : 숫자가 아닌것
+        let leng = val.length;
+        let y = 0, m = 0, d = 0;
+        if(leng == 6){
+            y = parseInt(val.substring(0,4));
+            m = parseInt(val.substring(4));
+            d = 1;
+        }else if(leng == 8){
+            y = parseInt(val.substring(0,4));
+            m = parseInt(val.substring(4,6));
+            d = parseInt(val.substring(6));
+        }else{
+            return false;
+        }
+        let dateRegex = /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+        result = dateRegex.test(d+'-'+m+'-'+y);
+    } catch (err) {
+        alert(err);
+        result = false;
+    }
+    return result;
+}
+
+function checkDateRange(val1,val2){
+    if(!checkValidDate(val1.value)){
+        alert("유효하지 않은 날짜입니다.");
+        val1.select();
+        val1.focus();
+        return false;
+    }
+    if(!checkValidDate(val2.value)){
+        alert("유효하지 않은 날짜입니다.");
+        val2.select();
+        val2.focus();
+        return false;
+    }
+    if(val1.value > val2.value){
+        alert("일자 범위가 잘못되었습니다.");
+        val2.select();
+        val2.focus();
+        return false;
+    }
+}
+
+//-[커서자동선택이동]------------------------------------------------------------------
+function nextSelectFocus(thisitem,cnt,nextitem,select){
+    if(thisitem.value.length == cnt){
+        if(select == "Y") nextitem.select();
+        nextitem.focus();
+    }
+}
+//---------------------------------------------------------------------------------
+
+function onInputHandler2(date) {
+    let val = date.value.replace(/\D/g, ""); // \D : 숫자가 아닌것
+    let leng = val.length;
+    let result = "";
+    let errmsg = "";
+
+    if(leng < 6) result = val;
+    else if(leng < 8){
+        result += val.substring(0,4);
+        result += "-";
+        result += val.substring(4);
+    }else{
+        result += val.substring(0,4);
+        result += "-";
+        result += val.substring(4,6);
+        result += "-";
+        result += val.substring(6);
+
+        if(!checkValidDate(result)){
+            errmsg = "유효하지 않은 날짜입니다.";
+            //warning.classList.add("on");
+        } else{
+            //warning.classList.remove("on");
+        }
+    }
+    date.value = result;
+    if(errmsg != ""){
+        date.select();
+        date.focus();
+        alert(errmsg);
+    }
+}
+
+
+        $(function(){
+            $("#monthPicker1").datepicker({
+                yearRange: "c-5:c+2",
+                yearSuffix: "년",
+                dateFormat: 'yy-mm',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                defaultDate: new Date($("#monthPicker").val()),
+         
+                onClose: function(dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).val($.datepicker.formatDate('yy-mm', new Date(year, month, 1)));
+                },
+                onSelect: function(dateText) {
+                    alert(dateText);
+                }
+            });
+            $("#monthPicker").focus(function () {
+                $(".ui-datepicker-calendar").hide();
+                $("#ui-datepicker-div").position({
+                    my: "center top",
+                    at: "center bottom",
+                    of: $(this)
+                });
+            });
+        });
+
+        function checkValidDate2(date1, date2) {
+            try {
+                var value = date1.value.replace(/-/g,'');
+                if(value.length != 8 && value.length != 6){
+                    alert("일자 형식이 유효하지 않습니다. (yyyyMMdd / yyyy-MM-dd / yyyyMM / yyyy-MM)");
+                    //date1.select();
+                    //date1.focus();
+                    return false;
+                }
+
+                var y = parseInt(value.substring(0,4),10);
+                var m = parseInt(value.substring(4,6),10);
+                var d = value.length==8?parseInt(value.substring(6,8),10):1;
+                
+                var dateRegex = /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+                if(dateRegex.test(d+'-'+m+'-'+y)){
+                    alert(value);
+                }else{
+                    alert("년월"+(value.length==8?"일":"")+" 형식이 유효하지 않습니다.");
+                    //date1.select();
+                    //date1.focus();
+                    return false;
+                }
+            } catch (err) {
+                alert("일자 형식이 유효하지 않습니다. ("+err+")");
+                //date1.select();
+                //date1.focus();
+                return false;
+            }    
+        }
+        </script>
 <div style="margin-top:1px;">
 <table style="width:700px;" class="table_tit">
     <tr>
