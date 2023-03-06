@@ -163,17 +163,20 @@ $( function() {
         <script>
         var setDatepicker={
             dateFormat: "yyyymmdd",
-            yearRange: "c-5:c+2",
-            yearSuffix: "년",
-            changeMonth: true,
-            changeYear: true,
-            showMonthAfterYear: true,
-            showOtherMonths: true,
-            showButtonPanel: true,
-            closeText: "닫기",
-            prevText: "이전",
-            nextText: "다음",
-            currentText: "오늘",
+            yearRange: "c-5:c+2", // 년도 선택 셀렉트박스를 현재 연도에서 이전, 이후로 얼마의 범위를 표시할 것인가
+            //yearRange: "2010:2013", //연도 범위
+            yearSuffix: "년", // 년도 뒤 글자
+            changeMonth: true, // 월변경 가능
+            changeYear: true, // 년변경 가능
+            showMonthAfterYear: true, // 년도뒤에 월 표시
+            showOtherMonths: true, // 다른월의 일자 표시
+            showButtonPanel: true, // 캘린더 하단에 버튼 패널을 표시한다
+            prevText: "이전", // prev 아이콘의 툴팁
+            nextText: "다음", // next 아이콘의 툴팁
+            //numberOfMonths: [1,1], // 한 번에 얼마나 많은 월을 표시할 것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+            //stepMonths: 3, // next, prev 버튼을 클릭했을 때 얼마나 많은 월을 이동하여 표시하는가
+            closeText: "닫기", // 닫기 버튼 패널
+            currentText: "오늘", // 오늘 날짜로 이동하는 버튼 패널
             monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip 텍스트
             monthNamesShort: ["1","2","3","4","5","6","7","8","9","10","11","12"], //달력의 월 부분 텍스트
             dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], //달력의 요일 부분 Tooltip 텍스트
