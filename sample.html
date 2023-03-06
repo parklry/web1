@@ -127,7 +127,7 @@ $( function() {
             <table class="table_opt">
                 <tr>
                     <th>회람</th>
-                    <td><input type="text" value="aaaaaa"></td>
+                    <td style="width:250px;"><input type="text" value="aaaaaa"></td>
                     <th>공지</th>
                     <td><input type="checkbox" value="1" checked>
         <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="101" /> ~
@@ -150,6 +150,17 @@ $( function() {
                         </select>
                         <input style="width:80px; text-align:center;" type="text" oninput="autoDash(this,6);" name="johaeMonth" class="monthPicker" id="monthPicker" size="5" maxlength="7" value="" autocomplete="off" placeholder="YYYYMM" />
                         <a href="#;" onClick="alert(checkValidDate(dateForm.johaeMonth.value));">[체크]</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>기간</th>
+                    <td>
+        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="101" /> ~
+        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeEndDate" class="datepicker2" id="datepicker2" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="102" />
+                    </td>
+                    <th>검색월</th>
+                    <td>
+        <a href="#;" onClick="checkDateRange(dateForm.johaeStartDate,dateForm.johaeEndDate);">[체크]</a>
                     </td>
                 </tr>
             </table>
