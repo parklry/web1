@@ -22,9 +22,15 @@ function Print(gubun) {
 </head>
 
 <body onload="">
-
+<form name="_TableForm">  
+<select name="pages">
+  <option value="30">30</option>
+  <option value="50">50</option>
+  <option value="100">100</option>
+</select>
 <button type="button" id="prt" onclick="Print('prt');">Prt</button>
 <button type="button" id="pdf" onclick="Print('pdf');">PDF</button>
+</form>
 <br>
 <iframe style="margin-top:1px; width:700px; height:100px; border:1px solid #000;" onload="" src="" id="myframe" name="myframe"></iframe>
 
