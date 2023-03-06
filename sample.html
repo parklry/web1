@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>HTML test</title>
-<!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
-<!--<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>-->
-<link rel="stylesheet" href="common/css/jquery-ui.min.css">
-<script src="common/js/jquery-3.6.3.min.js"></script>
-<script src="common/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<!--<link rel="stylesheet" href="common/css/jquery-ui.min.css">-->
+<!--<script src="common/js/jquery-3.6.3.min.js"></script>-->
+<!--<script src="common/js/jquery-ui.min.js"></script>-->
 <style type="text/css">
 * { margin:0; padding:0; color:#000000; }
 
@@ -162,13 +162,23 @@ $( function() {
         </style>
         <script>
         var setDatepicker={
+            format: "yyyymmdd",
             yearRange: "c-5:c+2",
             yearSuffix: "년",
+            showMonthAfterYear: false,
             changeMonth: true,
             changeYear: true,
             showOtherMonths: true,
             showButtonPanel: true,
             closeText: "닫기",
+            prevText: "이전",
+            nextText: "다음",
+            currentText: "오늘",
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip 텍스트
+            monthNamesShort: ["1","2","3","4","5","6","7","8","9","10","11","12"], //달력의 월 부분 텍스트
+            dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], //달력의 요일 부분 Tooltip 텍스트
+            dayNamesShort: ['일','월','화','수','목','금','토'], //달력의 요일 부분 Tooltip 텍스트
+            dayNamesMin: ['일','월','화','수','목','금','토'], //달력의 요일 부분 텍스트
             //showOn: "both", // both, button
             //buttonText: "달력",
             //buttonImage: "https://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
