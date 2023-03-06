@@ -11,7 +11,7 @@ td { border:#999999 solid 1px; }
 </style>
 <script>
 function Print(gubun) {
-  var pages = 100;
+  var pages = _TableForm.pages.value;
   if(gubun == 'prt') {
     document.getElementById("myframe").src = 'print_R.html?pages='+pages;
   } else {
