@@ -18,6 +18,7 @@ $( function() {
 </head>
 
 <body onload="" style="padding:5px;">
+<form name="_TableForm" method="post" onsubmit="return false;">
 <div>
 <table style="width:700px;">
     <tr>
@@ -63,12 +64,12 @@ $( function() {
                     <td>
         <input style="width:100px; text-align:center;" type="text" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="8" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="101" /> ~
         <input style="width:100px; text-align:center;" type="text" name="johaeEndDate" class="datepicker2" id="datepicker2" size="8" maxlength="8" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="102" />
-        <a href="#;" onClick="checkDateRange(dateForm.johaeStartDate,dateForm.johaeEndDate);">[체크]</a>
+        <a href="#;" onClick="checkDateRange(_TableForm.johaeStartDate,_TableForm.johaeEndDate);">[체크]</a>
                     </td>
                     <th>검색월</th>
                     <td>
                         <input style="width:80px; text-align:center;" type="text" name="johaeMonth" class="monthPicker" id="monthPicker" size="5" maxlength="7" value="" autocomplete="off" placeholder="YYYYMM" />
-                        <a href="#;" onClick="alert(checkValidDate(dateForm.johaeMonth.value));">[체크]</a>
+                        <a href="#;" onClick="alert(checkValidDate(_TableForm.johaeMonth.value));">[체크]</a>
                     </td>
                 </tr>
             </table>
@@ -76,6 +77,7 @@ $( function() {
     </tr>
 </table>
 </div>
+  </form>
 <style>
             .ui-datepicker-trigger { margin-left:1px; }
         </style>
@@ -268,12 +270,11 @@ function onInputHandler2(date) {
     }
 }
 
-
-        $(function(){
+          $(function(){
             $("#monthPicker1").datepicker({
                 yearRange: "c-5:c+2",
                 yearSuffix: "년",
-                dateFormat: 'yy-mm',
+                dateFormat: 'yymm',
                 changeMonth: true,
                 changeYear: true,
                 showButtonPanel: true,
