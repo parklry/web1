@@ -11,10 +11,11 @@ td { border:#999999 solid 1px; }
 </style>
 <script>
 function Print(gubun) {
+  var pages = 100;
   if(gubun == 'prt') {
-    document.getElementById("myframe").src = 'print_R.html';
+    document.getElementById("myframe").src = 'print_R.html?pages='+pages;
   } else {
-    document.getElementById("myframe").src = 'print_P.html';
+    document.getElementById("myframe").src = 'print_P.html?pages='+pages;
   }
 }
 </script>
