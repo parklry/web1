@@ -12,7 +12,10 @@ td { border:#999999 solid 1px; }
 <script>
 function Print(gubun) {
   if(gubun == 'prt') {
+    alert('1');
     myframe.src = 'print_R.html';
+    alert('2');
+    document.getElementById("myframe").src = 'print_R.html';
   } else {
     myframe.src = 'print_P.html';
   }
@@ -25,7 +28,7 @@ function Print(gubun) {
 <button type="button" id="prt" onclick="Print('prt');">Prt</button>
 <button type="button" id="pdf" onclick="Print('pdf');">PDF</button>
 <br>
-<iframe style="margin-top:1px; width:700px; height:100px; border:none;" onload="" src="" id="myframe" name="myframe"></iframe>
+<iframe style="margin-top:1px; width:700px; height:100px; border:1px solid #000;" onload="" src="" id="myframe" name="myframe"></iframe>
 
 </body>
 </html>
