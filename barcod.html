@@ -1,0 +1,321 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>표준바코드(스캔)</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/2022/js/jquery-barcode.js"></script>
+<style>
+@page { size:A4;margin:0; }
+@media print {
+    * { margin:0;padding:0;box-sizing:border-box;-moz-box-sizing:border-box; }
+}
+
+* { margin:0;padding:0;box-sizing:border-box;-moz-box-sizing:border-box; }
+
+.page { position:relative;width:210mm;min-height:297mm;border:1px solid #000; }
+.prtBtotal { position:absolute;width:60mm;height:36mm;table-layout:fixed;border-collapse:collapse;border:1px solid #000; }
+.prtBtotal div { position:absolute;text-align:center; }
+.prtBitmcd { left:0   ;top:0   ;width:60mm;height:11mm;line-height:10mm;padding-left:2px;font-size:18px;font-weight:bold;font-family:굴림체;border-bottom:1px solid #000;overflow:hidden; }
+.prtBbsize { left:0   ;top:11mm;width:18mm;height:14mm;font-size:35px;font-weight:bold;font-family:Arial Narrow;border-right:1px solid #000; }
+.prtBsizmm { left:0   ;top:21mm;width:18mm;height: 4mm;font-size:10px;font-family:Arial Narrow;border-bottom:1px solid #000; }
+.prtBcolor { left:18mm;top:11mm;width:42mm;height: 7mm;font-size:18px;font-weight:bold;font-family:Dialog;border-bottom:1px solid #000; }
+.prtBstdcd { left:18mm;top:18mm;width:42mm;height: 7mm;font-size:14px;font-family:Dialog;border-bottom:1px solid #000; }
+.prtBarcod { position:fixed;width:61mm;height:10mm;text-align:center;margin-top:3px; }
+.barcode {
+    display: inline-block;
+    vertical-align: middle;
+}
+</style>
+<script>
+<!--
+function New() {
+    //document.body.style.zoom = "80%";
+	//window.print();
+}
+//-->
+</script>
+</head>
+
+
+<body onLoad="New();">
+<div class="page">
+    
+    
+    <div class="prtBtotal" id="prtBtotal0" style="left:8mm;top:17.0mm;">
+        <div class="prtBitmcd" style="text-align:left;">212100059 델루아</div>
+        <div class="prtBbsize">240</div>
+        <div class="prtBsizmm">mm</div>
+        <div class="prtBcolor">ZB/</div>
+        <div class="prtBstdcd">8-809615-028667</div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:42.0mm;"><div id="bcTarget0" class="barcode"></div></div>
+    
+    <script>$("#bcTarget0").barcode("8809615028667","code128",{"barHeight":36,"showHRI":false});</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal1" style="left:74mm;top:17.0mm;">
+        <div class="prtBitmcd" style="text-align:left;">212100406 노리스W HP</div>
+        <div class="prtBbsize">250</div>
+        <div class="prtBsizmm">mm</div>
+        <div class="prtBcolor">ZB/</div>
+        <div class="prtBstdcd">8-809775-263540</div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:42.0mm;"><div id="bcTarget1" class="barcode"></div></div>
+    
+    <script>$("#bcTarget1").barcode("8809775263540","code128",{"barHeight":36,"showHRI":false});</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal2" style="left:140mm;top:17.0mm;">
+        <div class="prtBitmcd" style="text-align:left;">212200001 월드컵플렉스운동화LM</div>
+        <div class="prtBbsize">230</div>
+        <div class="prtBsizmm">mm</div>
+        <div class="prtBcolor">ZB/</div>
+        <div class="prtBstdcd">8-809775-264875</div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:42.0mm;"><div id="bcTarget2" class="barcode"></div></div>
+    
+    <script>$("#bcTarget2").barcode("8809775264875","code128",{"barHeight":36,"showHRI":false});</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal3" style="left:8mm;top:55.2mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:80.2mm;"><div id="bcTarget3" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal3").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal4" style="left:74mm;top:55.2mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:80.2mm;"><div id="bcTarget4" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal4").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal5" style="left:140mm;top:55.2mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:80.2mm;"><div id="bcTarget5" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal5").style.display = "none";</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal6" style="left:8mm;top:93.4mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:118.4mm;"><div id="bcTarget6" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal6").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal7" style="left:74mm;top:93.4mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:118.4mm;"><div id="bcTarget7" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal7").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal8" style="left:140mm;top:93.4mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:118.4mm;"><div id="bcTarget8" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal8").style.display = "none";</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal9" style="left:8mm;top:131.60000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:156.60000000000002mm;"><div id="bcTarget9" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal9").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal10" style="left:74mm;top:131.60000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:156.60000000000002mm;"><div id="bcTarget10" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal10").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal11" style="left:140mm;top:131.60000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:156.60000000000002mm;"><div id="bcTarget11" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal11").style.display = "none";</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal12" style="left:8mm;top:169.8mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:194.8mm;"><div id="bcTarget12" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal12").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal13" style="left:74mm;top:169.8mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:194.8mm;"><div id="bcTarget13" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal13").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal14" style="left:140mm;top:169.8mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:194.8mm;"><div id="bcTarget14" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal14").style.display = "none";</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal15" style="left:8mm;top:208.0mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:233.0mm;"><div id="bcTarget15" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal15").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal16" style="left:74mm;top:208.0mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:233.0mm;"><div id="bcTarget16" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal16").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal17" style="left:140mm;top:208.0mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:233.0mm;"><div id="bcTarget17" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal17").style.display = "none";</script>
+    
+    
+    
+    
+    <div class="prtBtotal" id="prtBtotal18" style="left:8mm;top:246.20000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:8mm;top:271.20000000000005mm;"><div id="bcTarget18" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal18").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal19" style="left:74mm;top:246.20000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:74mm;top:271.20000000000005mm;"><div id="bcTarget19" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal19").style.display = "none";</script>
+    
+    
+    <div class="prtBtotal" id="prtBtotal20" style="left:140mm;top:246.20000000000002mm;">
+        <div class="prtBitmcd" style="text-align:left;"> </div>
+        <div class="prtBbsize"></div>
+        <div class="prtBsizmm"></div>
+        <div class="prtBcolor"></div>
+        <div class="prtBstdcd"></div>
+    </div>
+    <div class="prtBarcod" style="left:140mm;top:271.20000000000005mm;"><div id="bcTarget20" class="barcode"></div></div>
+    
+    <script>document.getElementById("prtBtotal20").style.display = "none";</script>
+    
+    
+    
+</div>
+</body>
+</html>
+
+
