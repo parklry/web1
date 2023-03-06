@@ -20,6 +20,15 @@ table { page-break-inside: avoid; }
 </style>
 <script>
 window.onload = function() { Print('prt'); }
+var urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+    return paramPair.split(/=(.+)?/).slice(0, 2);
+}).reduce(function(obj, pairArray) {
+    obj[pairArray[0]] = pairArray[1];
+    return obj;
+}, {});
+
+var pages = urlParams.pages;    
+
 function Print(gubun){
     if(gubun == 'prt'){
         window.print();
@@ -41,7 +50,7 @@ function Print(gubun){
 
 <body>
 <script>
-for(var p=0; p<100; p++){
+for(var p=0; p<parseInt(pages,10); p++){
     document.write('<div style="height:80px;margin-top:40px;">'+(p+1)+' 페이지</div>');
     document.write('<table style="width:700px;">');
     for(var i=0; i<30; i++){ var strA = ""; for(var j=0; j<5; j++){ strA += i; }
