@@ -1,0 +1,95 @@
+* { margin:0; padding:0; color:#000000; }
+
+body {
+  font-size:12px;
+	font-family:굴림체,tahoma,verdana,ms sans serif,courier new;
+}
+
+table { border-collapse:collapse; }
+
+select { height:20px; vertical-align:top; }
+img { border:none; vertical-align:top; }
+
+.table_btn { width:100%; background-color:#3971ae; border:#999999 solid 1px; border-bottom:none; }
+.table_btn th { height:30px; font-weight:bold; color:#ffffff; text-align:left; padding-left:2px; }
+.table_btn td { padding-left:2px; }
+
+.table_opt { width:100%; background-color:#dfdfdf; }
+.table_opt th { width:80px; height:24px; border:#999999 solid 1px; text-align:center; font-weight:bold; }
+.table_opt td { background-color:#eeeeee; border:#999999 solid 1px; padding-left:2px; }
+
+.table_tit { width:100%; background-color:#dfdfdf; border:#999999 solid 1px; }
+.table_tit td { height:24px; border:#999999 solid 1px; padding-left:2px; text-align:center; }
+
+.table_tot { width:100%; background-color:#d2d2d2; border:#999999 solid 1px; }
+.table_tot td { height:24px; border:#999999 solid 1px; padding-left:2px; }
+.table_tot tr:first-child td { border-top:none; }
+
+/* 버튼스타일 */
+.btn {
+  display: inline-block;
+  padding: 0px 5px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 11px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+}
+
+.btn:active,
+.btn.active {
+  background-color: #cccccc \9;
+}
+
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  transition: background-position 0.1s linear;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn.active,
+.btn:active {
+  background-image: none;
+  outline: 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+}
