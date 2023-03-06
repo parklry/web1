@@ -12,12 +12,9 @@ td { border:#999999 solid 1px; }
 <script>
 function Print(gubun) {
   if(gubun == 'prt') {
-    alert('1');
-    myframe.src = 'print_R.html';
-    alert('2');
     document.getElementById("myframe").src = 'print_R.html';
   } else {
-    myframe.src = 'print_P.html';
+    document.getElementById("myframe").src = 'print_P.html';
   }
 }
 </script>
