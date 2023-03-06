@@ -61,13 +61,13 @@ $( function() {
                 <tr>
                     <th>기간</th>
                     <td>
-        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="101" /> ~
-        <input style="width:100px; text-align:center;" type="text" oninput="autoDash(this,8);" name="johaeEndDate" class="datepicker2" id="datepicker2" size="8" maxlength="10" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="102" />
+        <input style="width:100px; text-align:center;" type="text" name="johaeStartDate" class="datepicker1" id="datepicker1" size="8" maxlength="8" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="101" /> ~
+        <input style="width:100px; text-align:center;" type="text" name="johaeEndDate" class="datepicker2" id="datepicker2" size="8" maxlength="8" value="" autocomplete="off" placeholder="YYYYMMDD" tabindex="102" />
         <a href="#;" onClick="checkDateRange(dateForm.johaeStartDate,dateForm.johaeEndDate);">[체크]</a>
                     </td>
                     <th>검색월</th>
                     <td>
-                        <input style="width:80px; text-align:center;" type="text" oninput="autoDash(this,6);" name="johaeMonth" class="monthPicker" id="monthPicker" size="5" maxlength="7" value="" autocomplete="off" placeholder="YYYYMM" />
+                        <input style="width:80px; text-align:center;" type="text" name="johaeMonth" class="monthPicker" id="monthPicker" size="5" maxlength="7" value="" autocomplete="off" placeholder="YYYYMM" />
                         <a href="#;" onClick="alert(checkValidDate(dateForm.johaeMonth.value));">[체크]</a>
                     </td>
                 </tr>
