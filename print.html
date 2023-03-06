@@ -10,16 +10,22 @@ table { border-collapse:collapse; }
 td { border:#999999 solid 1px; }
 </style>
 <script>
-
+function Print(gubun) {
+  if(gubun == 'prt') {
+    myframe.src = 'print_R.html';
+  } else {
+    myframe.src = 'print_P.html';
+  }
+}
 </script>
 </head>
 
 <body onload="">
 
-<button type="button" id="prt" onclick="myframe.Print('prt');">Prt</button>
-<button type="button" id="pdf" onclick="myframe.Print('pdf');">PDF</button>
+<button type="button" id="prt" onclick="Print('prt');">Prt</button>
+<button type="button" id="pdf" onclick="Print('pdf');">PDF</button>
 <br>
-<iframe style="margin-top:1px; width:700px; height:100px; border:none;" onload="" src="print_R.html" id="myframe" name="myframe"></iframe>
+<iframe style="margin-top:1px; width:700px; height:100px; border:none;" onload="" src="" id="myframe" name="myframe"></iframe>
 
 </body>
 </html>
