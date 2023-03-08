@@ -121,12 +121,12 @@ $( function() {
         });
 
         var setMonthpicker={
-            yearRange: "c-5:c+2",
-            yearSuffix: "년",
             dateFormat: 'yy-mm',
-            changeMonth: true,
-            changeYear: true,
-            showButtonPanel: true,
+            yearRange: "c-5:c+2",
+            //yearSuffix: "년",
+            //changeMonth: true,
+            //changeYear: true,
+            //showButtonPanel: true,
             showOn: "button",
             buttonText: "달력",
 
@@ -359,8 +359,9 @@ function resizeIframe(iframe,sumbar,subadd) {
     const bar_height = document.getElementById(sumbar).clientHeight;
     document.getElementById(iframe).style.height = (win_height - document.getElementById(iframe).getBoundingClientRect().top - bar_height - subadd) + 'px';
 }
-window.onresize = function() { resizeIframe("myframe","bar_sum",20); }
-resizeIframe("myframe","bar_sum",20);
+function resizeR() { resizeIframe("myframe","bar_sum",20); }
+window.onresize = function() { resizeR(); }
+resizeR();
 </script>
 </html>
         
