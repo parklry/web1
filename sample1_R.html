@@ -1,0 +1,508 @@
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title>출고지시(온라인)</title>
+<link rel="stylesheet" href="/2020/css/common.css?v=1678397564992">
+<script>
+<!--
+function SelectAll() {
+	if(parent._ButtonForm.Btn_Select.innerText == '전체의뢰선택') {
+		for(var i = 0; i < _TableFormR.bcheck.length - 1; i++) {
+			if(!_TableFormR.bcheck[i].disabled) _TableFormR.bcheck[i].checked = true;
+		}
+		parent._ButtonForm.Btn_Select.innerText = '전체의뢰해제';
+		parent._CheckForm.allchk.checked = true;
+	} else {
+		for(var i = 0; i < _TableFormR.bcheck.length - 1; i++) {
+			if(!_TableFormR.bcheck[i].disabled) _TableFormR.bcheck[i].checked = false;
+		}
+		parent._ButtonForm.Btn_Select.innerText = '전체의뢰선택';
+		parent._CheckForm.allchk.checked = false;
+	}
+}
+
+function SelectTotal(chknam) {
+	if(parent._ButtonForm.Btn_Selord.innerText == '전체지시선택') {
+		for(var i = 0; i < eval('_TableFormR.'+chknam).length - 1; i++) {
+			if(!eval('_TableFormR.'+chknam)[i].disabled) eval('_TableFormR.'+chknam)[i].checked = true;
+		}
+		if(chknam == 'ordchk') parent._ButtonForm.Btn_Selord.innerText = '전체지시해제';
+		eval('parent._CheckForm.'+chknam).checked = true;
+	} else {
+		for(var i = 0; i < eval('_TableFormR.'+chknam).length - 1; i++) {
+			if(!eval('_TableFormR.'+chknam)[i].disabled) eval('_TableFormR.'+chknam)[i].checked = false;
+		}
+		if(chknam == 'ordchk') parent._ButtonForm.Btn_Selord.innerText = '전체지시선택';
+		eval('parent._CheckForm.'+chknam).checked = false;
+	}
+}
+
+function SelectAllchk(chknam) {
+	if(eval('parent._CheckForm.'+chknam).checked) {
+		for(var i = 0; i < eval('_TableFormR.'+chknam).length - 1; i++) {
+			if(!eval('_TableFormR.'+chknam)[i].disabled) eval('_TableFormR.'+chknam)[i].checked = true;
+		}
+	} else {
+		for(var i = 0; i < eval('_TableFormR.'+chknam).length - 1; i++) {
+			if(!eval('_TableFormR.'+chknam)[i].disabled) eval('_TableFormR.'+chknam)[i].checked = false;
+		}
+	}
+}
+
+function getResult(bcondi) {
+	var s = '';
+	var errmsg = '';
+	if(bcondi == 'Bfwdel') {
+		for(var i = 0; i < _TableFormR.bcheck.length - 1; i++) {
+			if(_TableFormR.bcheck[i].disabled || !_TableFormR.bcheck[i].checked) continue;
+			var bpdano = _TableFormR.dpdano[i].value; if(isNaN(parseInt(bpdano,10))) bpdano = '0';
+			var bfwprt = _TableFormR.pfwprt[i].value; if(isNaN(parseInt(bfwprt,10))) bfwprt = '0';
+			if(parseInt(bpdano,10) > 0 || parseInt(bfwprt,10) > 0) { //지시후, 인쇄후 SKIP
+				_TableFormR.bcheck[i].checked = false;
+				continue;
+			}
+			s += '<input type="hidden" name="bfwymd" value="'+_TableFormR.bfwymd[i].value+'" >\n';
+			s += '<input type="hidden" name="bhopcd" value="'+_TableFormR.bhopcd[i].value+'" >\n';
+			s += '<input type="hidden" name="bfwiss" value="'+_TableFormR.bfwiss[i].value+'" >\n';
+		}
+	} else if(bcondi == 'Bdlord') {
+		for(var i = 0; i < _TableFormR.bcheck.length - 1; i++) {
+			if(_TableFormR.bcheck[i].disabled || !_TableFormR.bcheck[i].checked) continue;
+			var bpdano = _TableFormR.dpdano[i].value; if(isNaN(parseInt(bpdano,10))) bpdano = '0';
+			var bfwprt = _TableFormR.pfwprt[i].value; if(isNaN(parseInt(bfwprt,10))) bfwprt = '0';
+			if(parseInt(bpdano,10) > 0 || parseInt(bfwprt,10) > 0 || _TableFormR.berror[i].value == 'Y') { //지시후, 인쇄후, 주소오류 SKIP
+				_TableFormR.bcheck[i].checked = false;
+				continue;
+			}
+			s += '<input type="hidden" name="bfwymd" value="'+_TableFormR.bfwymd[i].value+'" >\n';
+			s += '<input type="hidden" name="bhopcd" value="'+_TableFormR.bhopcd[i].value+'" >\n';
+			s += '<input type="hidden" name="bfwiss" value="'+_TableFormR.bfwiss[i].value+'" >\n';
+			s += '<input type="hidden" name="bpdano" value="'+_TableFormR.tpdano[i].value+'" >\n';
+		}
+	} else if(bcondi == 'Downad') {
+		for(var i = 0; i < _TableFormR.bcheck.length - 1; i++) {
+			if(_TableFormR.berror[i].value != 'Y') continue;
+			s += '<input type="hidden" name="bfwymd" value="'+_TableFormR.bfwymd[i].value+'" >\n';
+			s += '<input type="hidden" name="bhopcd" value="'+_TableFormR.bhopcd[i].value+'" >\n';
+			s += '<input type="hidden" name="bfwiss" value="'+_TableFormR.bfwiss[i].value+'" >\n';
+		}
+	} else if(bcondi == 'Invcan') {
+		for(var i = 0; i < _TableFormR.delchk.length - 1; i++) {
+			if(_TableFormR.delchk[i].disabled || !_TableFormR.delchk[i].checked) continue;
+			s += '<input type="hidden" name="invcno" value="'+_TableFormR.delchk[i].value+'" >\n';
+		}
+	} else {
+		for(var i = 0; i < _TableFormR.ordchk.length - 1; i++) {
+			if(_TableFormR.ordchk[i].disabled || !_TableFormR.ordchk[i].checked) continue;
+			if(bcondi == 'Orddel') {
+				var bfwprt = _TableFormR.bfwprt[i].value; if(isNaN(parseInt(bfwprt,10))) bfwprt = '0';
+				if(parseInt(bfwprt,10) > 0) { //인쇄후 SKIP
+					_TableFormR.ordchk[i].checked = false;
+					continue;
+				}
+			} else if(bcondi == 'Bprint') {
+				var bdliss = _TableFormR.bdliss[i].value; if(isNaN(parseInt(bdliss,10))) bdliss = '0';
+				if(parseInt(bdliss,10) > 0) { //피킹후 SKIP
+					_TableFormR.ordchk[i].checked = false;
+					continue;
+				}
+			} else if(bcondi == 'Prtdel') {
+				var bfwprt = _TableFormR.bfwprt[i].value; if(isNaN(parseInt(bfwprt,10))) bfwprt = '0';
+				var bdliss = _TableFormR.bdliss[i].value; if(isNaN(parseInt(bdliss,10))) bdliss = '0';
+				if(parseInt(bfwprt,10) == 0 || parseInt(bdliss,10) > 0) { //인쇄전, 피킹후 SKIP
+					_TableFormR.ordchk[i].checked = false;
+					continue;
+				}
+			} else if(bcondi == 'Invprt') {
+				var bfwprt = _TableFormR.bfwprt[i].value; if(isNaN(parseInt(bfwprt,10))) bfwprt = '0';
+				var bdliss = _TableFormR.bdliss[i].value; if(isNaN(parseInt(bdliss,10))) bdliss = '0';
+				if(parseInt(bfwprt,10) == 0 || parseInt(bdliss,10) > 0) { //인쇄전, 피킹후 SKIP
+					_TableFormR.ordchk[i].checked = false;
+					continue;
+				}
+			}
+			s += '<input type="hidden" name="bpdadt" value="'+_TableFormR.bpdadt[i].value+'" >\n';
+			s += '<input type="hidden" name="bpdano" value="'+_TableFormR.bpdano[i].value+'" >\n';
+		}
+	}
+		
+	if(errmsg != '') {
+		alert(errmsg);
+		s = '';
+	}
+	
+	if(s != '') {
+		s += '<input type="hidden" name="bdlcod" value="'+_TableFormR.bdlcod.value+'" >\n';
+	}
+	
+	return s;
+}
+
+function Open_BF1341J(bdlcod, bfwymd, bhopcd, bfwiss) {
+	var winw = 867;
+	var winh = 600;
+	var winl = screen.width/2  - (winw/2 +  6);
+	var wint = screen.height/2 - (winh/2 + 19);
+	var settings  ='width='+winw+',height='+winh+',top='+wint+',left='+winl+',';
+		settings +='scrollbars=no,resizable=yes,toolbar=no,location=no,status=no,menubar=no';
+
+	var url = '../BF0000J/BF1341J.jsp'
+	        + '?bdlcod='+bdlcod
+	        + '&bfwymd='+bfwymd
+	        + '&bhopcd='+bhopcd
+	        + '&bfwiss='+bfwiss
+	        ;
+	window.open(url, 'Popup_BF1341J', settings);
+}
+
+function Open_BF1342J(invcno) {
+	var winw = 427;
+	var winh = 450;
+	var winl = screen.width/2  - (winw/2 +  6);
+	var wint = screen.height/2 - (winh/2 + 19);
+	var settings  ='width='+winw+',height='+winh+',top='+wint+',left='+winl+',';
+		settings +='scrollbars=no,resizable=yes,toolbar=no,location=no,status=no,menubar=no';
+
+	var url = '../BF0000J/BF1342J.jsp'
+	        + '?invcno='+invcno
+	        ;
+	window.open(url, 'Popup_BF1342J', settings);
+}
+
+function Invcno(invcno) {
+	var url = '../print/BD3090P_T.jsp'
+	        + '?invcno='+invcno
+	        ;
+	window.open(url, 'BD3090P_T');
+}
+//-->
+</script>
+</head>
+
+<body onLoad="parent.LoadingEnd();" class="bodyr">
+<form name="_TableFormR" method="POST" onsubmit="return false;">
+
+			<table style="width:1190px;" class="detail">
+				
+
+				<tr class="detailtr" style="height:20px;">
+					<td style="width:025px;text-align:center;">
+						<input type="hidden" name="bfwymd" value="20230309">
+						<input type="hidden" name="bhopcd" value="28984">
+						<input type="hidden" name="bfwiss" value="7005">
+						<input type="hidden" name="dpdano" value="0">
+						<input type="hidden" name="tpdano" value="0">
+						<input type="hidden" name="berror" value="">
+						<input type="hidden" name="pfwprt" value="1">
+						<input type="checkbox" name="bcheck" value="0_0" style="height:16px;" >
+					</td>
+					<td                     >28984&nbsp;월드컵직영</td>
+					<td style="width:075px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7005');">2023-03-09</a></td>
+					<td style="width:030px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7005');">7005</a></td>
+					<td style="width:060px;text-align:center;">재고특판</td>
+					<td style="width:030px;text-align:right;">13</td>
+					<td style="width:060px;text-align:center;color:red;font-size:14px;" title="창동 118-9"></td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					<td style="width:075px;"></td>
+					<td style="width:030px;"></td>
+					<td style="width:035px;"></td>
+					<td style="width:030px;text-align:center;">7호</td>
+					<td style="width:030px;text-align:center;">○</td>
+					<td style="width:035px;">
+						
+					</td>
+					<td style="width:075px;">2023-03-09</td>
+					<td style="width:035px;">1004</td>
+					<td style="width:030px;text-align:right;">13</td>
+					<td style="width:040px;text-align:right;">100%</td>
+					<td style="width:030px;text-align:center;">○</td>
+					
+					<td style="width:130px;" title="">
+						
+							
+						
+						
+					</td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					
+					<td style="width:055px;"></td>
+					
+				</tr>
+
+			</table>
+
+			<table style="width:1190px;background:#E3FFC8;" class="detail">
+				
+
+				<tr class="detailtr" style="height:20px;">
+					<td style="width:025px;text-align:center;">
+						<input type="hidden" name="bfwymd" value="20230309">
+						<input type="hidden" name="bhopcd" value="28984">
+						<input type="hidden" name="bfwiss" value="7004">
+						<input type="hidden" name="dpdano" value="0">
+						<input type="hidden" name="tpdano" value="1">
+						<input type="hidden" name="berror" value="">
+						<input type="hidden" name="pfwprt" value="1">
+						<input type="checkbox" name="bcheck" value="1_0" style="height:16px;" >
+					</td>
+					<td                     >28984&nbsp;월드컵직영</td>
+					<td style="width:075px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7004');">2023-03-09</a></td>
+					<td style="width:030px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7004');">7004</a></td>
+					<td style="width:060px;text-align:center;">정상</td>
+					<td style="width:030px;text-align:right;">27</td>
+					<td style="width:060px;text-align:center;color:red;font-size:14px;" title="월문 1016-4"></td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					<td style="width:075px;"></td>
+					<td style="width:030px;"></td>
+					<td style="width:035px;"></td>
+					<td style="width:030px;text-align:center;">7호</td>
+					<td style="width:030px;text-align:center;">○</td>
+					<td style="width:035px;">
+						
+					</td>
+					<td style="width:075px;">2023-03-09</td>
+					<td style="width:035px;">1003</td>
+					<td style="width:030px;text-align:right;">27</td>
+					<td style="width:040px;text-align:right;">100%</td>
+					<td style="width:030px;text-align:center;">○</td>
+					
+					<td style="width:130px;" title="">
+						
+							
+						
+						
+					</td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					
+					<td style="width:055px;"></td>
+					
+				</tr>
+
+			</table>
+
+			<table style="width:1190px;" class="detail">
+				
+
+				<tr class="detailtr" style="height:20px;">
+					<td style="width:025px;text-align:center;">
+						<input type="hidden" name="bfwymd" value="20230309">
+						<input type="hidden" name="bhopcd" value="28984">
+						<input type="hidden" name="bfwiss" value="7001">
+						<input type="hidden" name="dpdano" value="0">
+						<input type="hidden" name="tpdano" value="2">
+						<input type="hidden" name="berror" value="">
+						<input type="hidden" name="pfwprt" value="1">
+						<input type="checkbox" name="bcheck" value="2_0" style="height:16px;" >
+					</td>
+					<td                     >28984&nbsp;월드컵직영</td>
+					<td style="width:075px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7001');">2023-03-09</a></td>
+					<td style="width:030px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7001');">7001</a></td>
+					<td style="width:060px;text-align:center;">정상</td>
+					<td style="width:030px;text-align:right;">32</td>
+					<td style="width:060px;text-align:center;color:red;font-size:14px;" title="법곳 446-2"></td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					<td style="width:075px;"></td>
+					<td style="width:030px;"></td>
+					<td style="width:035px;"></td>
+					<td style="width:030px;text-align:center;">7호</td>
+					<td style="width:030px;text-align:center;">○</td>
+					<td style="width:035px;">
+						
+					</td>
+					<td style="width:075px;">2023-03-09</td>
+					<td style="width:035px;">1012</td>
+					<td style="width:030px;text-align:right;">32</td>
+					<td style="width:040px;text-align:right;">100%</td>
+					<td style="width:030px;text-align:center;">○</td>
+					
+					<td style="width:130px;" title="">
+						
+							
+						
+						
+					</td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					
+					<td style="width:055px;"></td>
+					
+				</tr>
+
+				<tr class="detailtr" style="height:20px;">
+					<td style="width:025px;text-align:center;">
+						<input type="hidden" name="bfwymd" value="20230309">
+						<input type="hidden" name="bhopcd" value="28984">
+						<input type="hidden" name="bfwiss" value="7002">
+						<input type="hidden" name="dpdano" value="0">
+						<input type="hidden" name="tpdano" value="2">
+						<input type="hidden" name="berror" value="">
+						<input type="hidden" name="pfwprt" value="1">
+						<input type="checkbox" name="bcheck" value="2_1" style="height:16px;" >
+					</td>
+					<td                     >28984&nbsp;월드컵직영</td>
+					<td style="width:075px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7002');">2023-03-09</a></td>
+					<td style="width:030px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7002');">7002</a></td>
+					<td style="width:060px;text-align:center;">정상</td>
+					<td style="width:030px;text-align:right;">32</td>
+					<td style="width:060px;text-align:center;color:red;font-size:14px;" title=""></td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					<td style="width:075px;color:#C0C0C0;"></td>
+					<td style="width:030px;color:#C0C0C0;"></td>
+					<td style="width:035px;color:#C0C0C0;"></td>
+					<td style="width:030px;text-align:center;"></td>
+					<td style="width:030px;text-align:center;">○</td>
+					<td style="width:035px;">
+						
+					</td>
+					<td style="width:075px;">2023-03-09</td>
+					<td style="width:035px;">1011</td>
+					<td style="width:030px;text-align:right;">32</td>
+					<td style="width:040px;text-align:right;">100%</td>
+					<td style="width:030px;text-align:center;">○</td>
+					
+					<td style="width:130px;" title="">
+						
+							
+						
+						
+					</td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					
+					<td style="width:055px;"></td>
+					
+				</tr>
+
+				<tr class="detailtr" style="height:20px;">
+					<td style="width:025px;text-align:center;">
+						<input type="hidden" name="bfwymd" value="20230309">
+						<input type="hidden" name="bhopcd" value="28984">
+						<input type="hidden" name="bfwiss" value="7003">
+						<input type="hidden" name="dpdano" value="0">
+						<input type="hidden" name="tpdano" value="2">
+						<input type="hidden" name="berror" value="">
+						<input type="hidden" name="pfwprt" value="1">
+						<input type="checkbox" name="bcheck" value="2_2" style="height:16px;" >
+					</td>
+					<td                     >28984&nbsp;월드컵직영</td>
+					<td style="width:075px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7003');">2023-03-09</a></td>
+					<td style="width:030px;"><a href="javascript:void(0);" onClick="Open_BF1341J('B','20230309','28984','7003');">7003</a></td>
+					<td style="width:060px;text-align:center;">정상</td>
+					<td style="width:030px;text-align:right;">1</td>
+					<td style="width:060px;text-align:center;color:red;font-size:14px;" title=""></td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					<td style="width:075px;color:#C0C0C0;"></td>
+					<td style="width:030px;color:#C0C0C0;"></td>
+					<td style="width:035px;color:#C0C0C0;"></td>
+					<td style="width:030px;text-align:center;"></td>
+					<td style="width:030px;text-align:center;">○</td>
+					<td style="width:035px;">
+						
+					</td>
+					<td style="width:075px;">2023-03-09</td>
+					<td style="width:035px;">1005</td>
+					<td style="width:030px;text-align:right;">1</td>
+					<td style="width:040px;text-align:right;">100%</td>
+					<td style="width:030px;text-align:center;">○</td>
+					
+					<td style="width:130px;" title="">
+						
+							
+						
+						
+					</td>
+					<td style="width:025px;text-align:center;">
+						
+					</td>
+					
+					<td style="width:055px;"></td>
+					
+				</tr>
+
+			</table>
+
+	<input type="hidden" name="bcheck" value="">
+	<input type="hidden" name="bfwymd" value="">
+	<input type="hidden" name="bhopcd" value="">
+	<input type="hidden" name="bfwiss" value="">
+	<input type="hidden" name="dpdano" value="">
+	<input type="hidden" name="tpdano" value="">
+	<input type="hidden" name="berror" value="">
+	<input type="hidden" name="ordchk" value="">
+	<input type="hidden" name="bpdadt" value="">
+	<input type="hidden" name="bpdano" value="">
+	<input type="hidden" name="bfwprt" value="">
+	<input type="hidden" name="pfwprt" value="">
+	<input type="hidden" name="invcno" value="">
+	<input type="hidden" name="bdliss" value="">
+	<input type="hidden" name="ordnum" value="">
+	<input type="hidden" name="findgu" value="">
+	<input type="hidden" name="bdlcod" value="B" >
+	<input type="hidden" name="delchk" value="">
+</form>
+	<script language="javascript">
+	<!--
+		
+		parent._total0.innerText = '105';
+		
+		parent._total1.innerText = '105';
+		
+		parent._total2.innerText = '100%';
+	//-->
+	</script>
+	
+		<script language="javascript">
+		<!--
+			if(parent._TableForm.bcondi.value.length == 6 && parent._TableForm.bcondi.value == 'Search') parent.SetMessage('[조회] 처리가 완료되었습니다. ');
+			if(parent._TableForm.bcondi.value.length == 6 && parent._TableForm.bcondi.value == 'Ordnum') parent.SetMessage('[주문검색] 처리가 완료되었습니다.');
+			if(parent._TableForm.bcondi.value.length == 6 && parent._TableForm.bcondi.value == 'Bprtno') parent.SetMessage('[송장검색] 처리가 완료되었습니다.');
+			parent.SetButton(parent._TableForm.btnlst.value,'1|1|1|1|1|1|1|1|1|1|1|1|1|0');
+			if(parent._TableForm.bcondi.value == 'Bdlord') {
+				parent._CheckForm.ordchk.checked = true;
+				SelectTotal('ordchk');
+			}
+			
+			parent._TableForm.bcondi.value = 'Search';
+		//-->
+		</script>
+	
+
+
+	<div style="clear:left;"><iframe name="BD3090P_T" frameborder="1" style="width:700px;height:200px;"></iframe></div>
+
+
+</body>
+</html>
