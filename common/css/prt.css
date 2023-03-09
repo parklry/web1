@@ -1,0 +1,11 @@
+@media print {
+    * {
+        -webkit-print-color-adjust: exact; /* background(백 그라운드)사용 시 해당 속성을 보여 주게 */
+        print-color-adjust: exact;
+    }
+    html, body { width:210mm; height: 297mm; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    @page { margin: 0; } /* 머리글과 바닥글 비노출 */
+    body { margin: 1.6cm; }
+}
