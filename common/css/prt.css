@@ -10,7 +10,6 @@
     html, body { width:210mm; height: 297mm; }
     table { page-break-inside: auto; }
     tr { page-break-inside: avoid; page-break-after: auto; }
+    @page { margin: 0; } /* 머리글과 바닥글 비노출 */
     body { margin: 1.6cm; }
 }
-
-@page { margin: 0; } /* 머리글과 바닥글 비노출 */
