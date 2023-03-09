@@ -268,7 +268,7 @@ input[type="checkbox"] {
 }
 
 /* 상세 마우스오버 색상 */
-.detailtr:hover { 
+.detail tr:hover, .detailtr:hover { 
 	background:#E6E6FA;
 }
 
