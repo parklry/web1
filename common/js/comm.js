@@ -1,7 +1,7 @@
 // iframe 크기 자동 조절
 function resizeIframe(iframe,sumbar,subadd) {
     const win_height = window.innerHeight;
-    const bar_height = document.getElementById(sumbar).clientHeight;
+    const bar_height = document.getElementById(sumbar) ? document.getElementById(sumbar).clientHeight : 0;
     document.getElementById(iframe).style.height = (win_height - document.getElementById(iframe).getBoundingClientRect().top - bar_height - subadd) + 'px';
 }
 
