@@ -1,61 +1,34 @@
 
-
-
-
-
-
-		
-
-
-
-
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<title>(온라인)출고지시</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-<link rel="stylesheet" href="/2020/css/common.css?v=1678397511637">
-<script src="/2020/js/common.js?v=1678397511637"></script>
-<script src="/2020/js/calendar.js"></script>
-<script src="/2020/js/AllCheck.js"></script>
+<meta charset="utf-8">
+<title>HTML test</title>
+<link rel="stylesheet" href="common/css/comm.css">
+<link rel="stylesheet" href="common/css/jquery-ui.min.css">
+<script src="common/js/jquery-3.6.3.min.js"></script>
+<script src="common/js/jquery-ui.min.js"></script>
+<script src="common/js/common.js"></script>
+<script src="common/js/AllCheck.js"></script>
 <script>
 <!--
 function New() {
-	SetMessage('');
-	
-	
-		_TableForm.btnlst.value += '_ButtonForm.Btn_Search';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Select';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Bfwdel';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Bdlord';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Selord';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Orddel';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Bprint';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Prtdel';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Invprt';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Invcan';
-	
-		_TableForm.btnlst.value += '|_ButtonForm.Btn_Bexcel';
-	
+    _TableForm.btnlst.value += '_ButtonForm.Btn_Search';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Select';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Bfwdel';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Bdlord';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Selord';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Orddel';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Bprint';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Prtdel';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Invprt';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Invcan';
+    _TableForm.btnlst.value += '|_ButtonForm.Btn_Bexcel';
 	_TableForm.btnlst.value += '|_CheckForm.allchk|_CheckForm.ordchk|_CheckForm.delchk';
-	
 	SetButton(_TableForm.btnlst.value,'1|0|0|0|0|0|0|0|0|0|1|0|0|0');
-	
-	_TableForm.bfwymd1.select();
-	_TableForm.bfwymd1.focus();
-	
 	CheckOrdtyp();
+    _TableForm.bfwymd1.select();
+    _TableForm.bfwymd1.focus();
 }
 
 function CheckOrdtyp() {
@@ -77,14 +50,9 @@ function CheckOrdtyp() {
 }
 
 function Search() {
-	SetMessage('');
-
 	_TableForm.bcondi.value = 'Search';
 	if(!Bcheck()) { return false; }
-
 	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[조회] 처리중...');
-
 	SearchSubmit();
 }
 
@@ -95,392 +63,68 @@ function SearchSubmit() {
 	_CheckForm.ordchk.checked = false;
 	_CheckForm.delchk.checked = false;
 
-	_TableForm.action = '../BF0000J/BF1340J_R.jsp';
+	_TableForm.action = 'sample1_R.jsp';
 	_TableForm.target = 'iresult';
-	LoadingStart();
 	_TableForm.submit();
 }
 
 function SearchOrdnum() {
-	SetMessage('');
 
-	if(_TableForm.ordnum.value == '') {
-		SetMessage('[주문번호]를 입력 하세요.');
-		return false;
-	}
-
-	_TableForm.bcondi.value = _TableForm.findgu.value;
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('['+(_TableForm.bcondi.value == 'Ordnum' ? '주문' : '송장')+'검색] 처리중...');
-
-	SearchSubmit();
 }
 
 function Bfwdel() {
-	SetMessage('');
 
-	if(_TableForm.bremrk.value =='') {
-		SetMessage('[취소사유]를 입력 하세요.');
-		_TableForm.bremrk.focus();
-		return false;
-	}
-
-	_TableForm.bcondi.value = 'Bfwdel';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[의뢰취소] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="bremrk" value="'+_TableForm.bremrk.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Bdlord() {
-	SetMessage('');
 
-	if(!DateCheck(_TableForm.bpdadt,8,'[지시일자]')) { return false; }
-
-	_TableForm.bcondi.value = 'Bdlord';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[출고지시] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="bpdadt" value="'+_TableForm.bpdadt.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Orddel() {
-	SetMessage('');
 
-	_TableForm.bcondi.value = 'Orddel';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[지시삭제] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Bprint() {
-	SetMessage('');
 
-/*
-	_TableForm.bcondi.value = 'Bprint';
-	if(!Bcheck()) { return false; }
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[출력(prt)] 처리중...');
-
-	_TableForm.action = '../print/BF1340P.jsp';
-	_TableForm.target = 'BF1340P';
-   	LoadingStart();
-	_TableForm.submit();
-*/
-
-	_TableForm.bcondi.value = 'Bprint';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[출력(prt)] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../print/BF1340P.jsp" target="BF1340P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Prtdel() {
-	SetMessage('');
 
-	_TableForm.bcondi.value = 'Prtdel';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[인쇄취소] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Invprt() {
-	SetMessage('');
 
-	_TableForm.bcondi.value = 'Invprt';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[송장출력] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../print/BD3090P1.jsp" target="BF1340P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="bpgmid" value="BF1340J" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	//LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Bdldel(bdlcod, bpdadt, bpdano) {
-	SetMessage('');
 
-	if(!confirm('해당번호의 출고를 취소 하시겠습니까?')) { return false; }
-
-	_TableForm.bcondi.value = 'Bdldel';
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[출고취소] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="bdlcod" value="'+bdlcod+'" >\n');
-		document.write('<input type="hidden" name="bpdadt" value="'+bpdadt+'" >\n');
-		document.write('<input type="hidden" name="bpdano" value="'+bpdano+'" >\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Invcan() {
-	SetMessage('');
 
-	_TableForm.bcondi.value = 'Invcan';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-
-	if(result.length == 0) {
-		SetMessage('[선택]된 자료가 없습니다.');
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[송장취소] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write(result);
-		document.write('\n\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Invdel(bdlcod, invcno) {
-	SetMessage('');
 
-	if(!confirm('해당송장을 취소 하시겠습니까?')) { return false; }
-
-	_TableForm.bcondi.value = 'Invdel';
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[송장취소] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_P.jsp" target="BF1340J_P" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="bdlcod" value="'+bdlcod+'" >\n');
-		document.write('<input type="hidden" name="invcno" value="'+invcno+'" >\n');
-		document.write('</form>');
-		document.close();
-	}
-	LoadingStart();
-	BF1340J_P.document.charset = 'euc-kr';
-	BF1340J_P._SubmitForm.submit();
 }
 
 
 function Bexcel() {
-	SetMessage('');
 
-	_TableForm.bcondi.value = 'Bexcel';
-	if(!Bcheck()) { return false; }
-	
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[출력(xls)] 처리중...');
-
-	_TableForm.action = '../BF0000J/BF1340J_E.jsp';
-	_TableForm.target = 'BF1340J_E';
-   	DownStart();
-	_TableForm.submit();
 }
 
 function Downad() {
-	SetMessage('');
 
-	if(_TableForm.bcondi.value == '') return;
-
-	_TableForm.bcondi.value = 'Downad';
-	var result = iresult.getResult(_TableForm.bcondi.value);
-	if(result.length == 0) {
-		SetMessage('[주소오류] 자료가 없습니다.',3);
-		return false;
-	}
-
-	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
-	SetMessage('[주소오류Excel] 처리중...');
-
-	with(BF1340J_P) {
-		document.open();
-		document.write('<form name="_SubmitForm" method="POST" action="../BF0000J/BF1340J_E.jsp" target="BF1340J_E" accept-charset="euc-kr" >\n');
-		document.write('<input type="hidden" name="bcondi" value="'+_TableForm.bcondi.value+'" >\n');
-		document.write('<input type="hidden" name="cookid" value="20230310" >\n');
-		document.write(result);
-		document.write('</form>');
-		document.close();
-	}
-	BF1340J_P.document.charset = 'euc-kr';
-	DownStart();
-	BF1340J_P._SubmitForm.submit();
 }
 
 function Bcheck() {
-	if(GetOptVal(_TableForm.bdlcod) == '') {
-		SetMessage('[창고구분]을 선택 하십시오.');
-		return false;
-	}
-	
-	if(_TableForm.bcondi.value != 'Bprint' && _TableForm.bcondi.value != 'Bexcel') {
-		if(!DateCheck(_TableForm.bfwymd1,8,'[의뢰일자1]')) { return false; }
-		if(!DateCheck(_TableForm.bfwymd2,8,'[의뢰일자2]')) { return false; }
-		if(!StrCompare(_TableForm.bfwymd1,_TableForm.bfwymd2,_TableForm.bfwymd2,'[의뢰일자]')) { return false; }
-		if(!IntCheck(_TableForm.bfwiss1,'[발행번호1]')) { return false; }
-		if(!IntCheck(_TableForm.bfwiss2,'[발행번호2]')) { return false; }
-		if(!IntCompare(_TableForm.bfwiss1,_TableForm.bfwiss2,_TableForm.bfwiss2,'[발행번호]')) { return false; }	
-		if(!StrCheck(_TableForm.bdptcd1,4,'[부서코드1]')) { return false; }
-		if(!StrCheck(_TableForm.bdptcd2,4,'[부서코드2]')) { return false; }
-		if(!StrCompare(_TableForm.bdptcd1,_TableForm.bdptcd2,_TableForm.bdptcd2,'[부서코드]')) { return false; }
-		if(!StrCheck(_TableForm.bempcd1,3,'[사원코드1]')) { return false; }
-		if(!StrCheck(_TableForm.bempcd2,3,'[사원코드2]')) { return false; }
-		if(!StrCompare(_TableForm.bempcd1,_TableForm.bempcd2,_TableForm.bempcd2,'[사원코드]')) { return false; }
-		if(!StrCheck(_TableForm.bhopcd1,5,'[매장코드1]')) { return false; }
-		if(!StrCheck(_TableForm.bhopcd2,5,'[매장코드2]')) { return false; }
-		if(!StrCompare(_TableForm.bhopcd1,_TableForm.bhopcd2,_TableForm.bhopcd2,'[매장코드]')) { return false; }
-		if(GetOptVal(_TableForm.ordtyp) == '') {
-			SetMessage('[지시구분]을 선택 하십시오.');
-			return false;
-		}
-		if(GetOptVal(_TableForm.ordprt) == '') {
-			SetMessage('[인쇄구분]을 선택 하십시오.');
-			return false;
-		}
-		if(GetOptVal(_TableForm.invprt) == '') {
-			SetMessage('[송장구분]을 선택 하십시오.');
-			return false;
-		}
-	}
 
-	if(_TableForm.bcondi.value == 'Bprint' || _TableForm.bcondi.value == 'Bexcel') {
-		if(!_TableForm.ordtyp[2].checked) {
-			SetMessage('[지시구분-지시후]를 선택 하십시오.');
-			return false;
-		}
-	}
-
-	if(_TableForm.ordtyp[2].checked) {
-		if(!DateCheck(_TableForm.bpdadt1,8,'[지시일자1]')) { return false; }
-		if(!DateCheck(_TableForm.bpdadt2,8,'[지시일자2]')) { return false; }
-		if(!StrCompare(_TableForm.bpdadt1,_TableForm.bpdadt2,_TableForm.bpdadt2,'[지시일자]')) { return false; }
-		if(!IntCheck(_TableForm.bpdano1,'[지시번호1]')) { return false; }
-		if(!IntCheck(_TableForm.bpdano2,'[지시번호2]')) { return false; }
-		if(!IntCompare(_TableForm.bpdano1,_TableForm.bpdano2,_TableForm.bpdano2,'[지시번호]')) { return false; }	
-	}
-
-	return true;
 }
 //-->
 </script>
 </head>
 
-<body onLoad="iresize(); New();" class="bodyj">
+<body onLoad="New();" class="bodyj">
 <table style="width:1135px;" class="topbar">
 	<tr>
 		<td>
@@ -488,30 +132,16 @@ function Bcheck() {
 			<table style="width:100%;" class="btnbar">
 				<tr>
 					<td>
-						<div style="float:left;width:350px;text-align:left;" class="pname">(온라인)출고지시</div>
-						
-						<button name="Btn_Bexcel" onClick="Bexcel();" style="float:right;">출력(xls)</button>
-						
-						<button name="Btn_Invcan" onClick="Invcan();" style="float:right;">송장취소</button>
-						
-						<button name="Btn_Invprt" onClick="Invprt();" style="float:right;">송장출력</button>
-						
-						<button name="Btn_Prtdel" onClick="Prtdel();" style="float:right;">인쇄취소</button>
-						
-						<button name="Btn_Bprint" onClick="Bprint();" style="float:right;">출력(prt)</button>
-						
-						<button name="Btn_Orddel" onClick="Orddel();" style="float:right;">지시취소</button>
-						
-						<button name="Btn_Selord" onClick="iresult.SelectTotal('ordchk');" style="float:right;">전체지시선택</button>
-						
-						<button name="Btn_Bdlord" onClick="Bdlord();" style="float:right;">출고지시</button>
-						
-						<button name="Btn_Bfwdel" onClick="Bfwdel();" style="float:right;">의뢰취소</button>
-						
-						<button name="Btn_Select" onClick="iresult.SelectAll();" style="float:right;">전체의뢰선택</button>
-						
-						<button name="Btn_Search" onClick="Search();" style="float:right;">조회</button>
-						
+						<div class="pname">가가가가가가가가가</div>						
+						<button name="Btn_Bexcel" onClick="Bexcel();">나나</button>						
+						<button name="Btn_Invcan" onClick="Invcan();">다다다다</button>						
+						<button name="Btn_Invprt" onClick="Invprt();">라라라라</button>						
+						<button name="Btn_Prtdel" onClick="Prtdel();">마마마마</button>						
+						<button name="Btn_Bprint" onClick="Bprint();">사사(prt)</button>						
+						<button name="Btn_Orddel" onClick="Orddel();">아아아아</button>
+						<button name="Btn_Bdlord" onClick="Bdlord();">차차차차</button>						
+						<button name="Btn_Bfwdel" onClick="Bfwdel();">카카카카</button>				
+						<button name="Btn_Search" onClick="Search();">파파</button>						
 					</td>
 				</tr>
 			</table>
@@ -527,98 +157,57 @@ function Bcheck() {
 				<input type="hidden" name="cookid" value="20230310">
 			<table class="optbar" style="width:100%;">
 				<tr style="height:24px;">
-					<td class="opt_name">창고구분</td>
+					<td class="opt_name">가가가가</td>
 					<td style="width:200px;">
-						
-							<input type="radio" name="bdlcod" value="B" checked>양지Ｗ
-						
-							<input type="radio" name="bdlcod" value="N" >양지Ｗ 2F
-						
+                        <input type="radio" name="bdlcod" value="B" checked>가가가가
+                        <input type="radio" name="bdlcod" value="N" >가가가가
 					</td>
-					<td class="opt_name">부서코드</td>
+					<td class="opt_name">가가가가</td>
 					<td style="width:110px;">
 						<input type="text" name="bdptcd1" value="0000" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bdptcd1,4,bdptcd2,'Y');"> ~
-						<input type="text" name="bdptcd2" value="9999" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bdptcd1,4,bdptcd2,'[부서코드]',bempcd1,'Y');">
+						<input type="text" name="bdptcd2" value="9999" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bdptcd1,4,bdptcd2,'[가가가가]',bempcd1,'Y');">
 					</td>
-					<td class="opt_name">사원코드</td>
+					<td class="opt_name">가가가가</td>
 					<td style="width:200px;">
 						<input type="text" name="bempcd1" value="000" maxlength="3" style="width:24px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bempcd1,3,bempcd2,'Y');"> ~
-						<input type="text" name="bempcd2" value="999" maxlength="3" style="width:24px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bempcd1,3,bempcd2,'[사원코드]',bhopcd1,'Y');">
+						<input type="text" name="bempcd2" value="999" maxlength="3" style="width:24px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bempcd1,3,bempcd2,'[가가가가]',bhopcd1,'Y');">
 					</td>
-					<td class="opt_name">매장코드</td>
+					<td class="opt_name">가가가가</td>
 					<td >
 						<input type="text" name="bhopcd1" value="00000" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bhopcd1,5,bhopcd2,'Y');"> ~
-						<input type="text" name="bhopcd2" value="99999" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bhopcd1,5,bhopcd2,'[매장코드]',bfwymd1,'Y');">
+						<input type="text" name="bhopcd2" value="99999" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bhopcd1,5,bhopcd2,'[가가가가]',bfwymd1,'Y');">
 					</td>
 				</tr>
 				<tr style="height:24px;">
-					<td class="opt_name">의뢰일자</td>
+					<td class="opt_name">가가가가</td>
 					<td >
-						<input type="text" name="bfwymd1" id="bfwymd1" value="20230310" maxlength="8" style="width:56px;" onclick="PopCalendar('day',bfwymd1,bfwymd1,'yyyymmdd');" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bfwymd2.select(); bfwymd2.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
-						<img src="/2020/images/calendar.gif" style="width:16px;height:16px;" Onclick="PopCalendar('day',bfwymd1,bfwymd1,'yyyymmdd');" alt="▦"> ~
-						<input type="text" name="bfwymd2" id="bfwymd2" value="20230310" maxlength="8" style="width:56px;" onclick="PopCalendar('day',bfwymd2,bfwymd2,'yyyymmdd');" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bfwiss1.select(); bfwiss1.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
-						<img src="/2020/images/calendar.gif" style="width:16px;height:16px;" Onclick="PopCalendar('day',bfwymd2,bfwymd2,'yyyymmdd');" alt="▦">
+						<input type="text" name="bfwymd1" id="bfwymd1" value="20230310" maxlength="8" style="width:56px;" autocomplete="off" placeholder="YYYYMMDD" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bfwymd2.select(); bfwymd2.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
+						<input type="text" name="bfwymd2" id="bfwymd2" value="20230310" maxlength="8" style="width:56px;" autocomplete="off" placeholder="YYYYMMDD" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bfwiss1.select(); bfwiss1.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
+                        <script>
+                        $(function() {
+                            $( "#bfwymd1" ).datepicker();
+                            $( "#bfwymd2" ).datepicker();
+                        });                        
+                        </script>
 					</td>
-					<td class="opt_name">발행번호</td>
+					<td class="opt_name">가가가가</td>
 					<td >
 						<input type="text" name="bfwiss1" value="0000" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bfwiss1,4,bfwiss2,'Y');"> ~
-						<input type="text" name="bfwiss2" value="9999" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bfwiss1,4,bfwiss2,'[의뢰번호]',bfwiss2,'Y');">
+						<input type="text" name="bfwiss2" value="9999" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bfwiss1,4,bfwiss2,'[가가가가]',bfwiss2,'Y');">
 					</td>
-					<td class="opt_name">지시구분</td>
+					<td class="opt_name">가가가가</td>
 					<td >
-						<input type="radio" name="ordtyp" value="T" onClick="CheckOrdtyp();" >전체
-						<input type="radio" name="ordtyp" value="1" onClick="CheckOrdtyp();" checked >지시전
-						<input type="radio" name="ordtyp" value="2" onClick="CheckOrdtyp();" >지시후
+						<input type="radio" name="ordtyp" value="T" onClick="CheckOrdtyp();" >나나
+						<input type="radio" name="ordtyp" value="1" onClick="CheckOrdtyp();" checked >나나
+						<input type="radio" name="ordtyp" value="2" onClick="CheckOrdtyp();" >나나
 					</td>
-					<td class="opt_name">인쇄구분</td>
+					<td class="opt_name">가가가가</td>
 					<td >
-						<input type="radio" name="ordprt" value="T" checked >전체
-						<input type="radio" name="ordprt" value="1" >인쇄전
-						<input type="radio" name="ordprt" value="2" >인쇄후
+						<input type="radio" name="ordprt" value="T" checked >나나
+						<input type="radio" name="ordprt" value="1" >나나
+						<input type="radio" name="ordprt" value="2" >나나
 					</td>
-				</tr>
-				<tr style="height:24px;">
-					<td class="opt_name">지시일자</td>
-					<td >
-						<input type="text" name="bpdadt1" id="bpdadt1" value="20230310" maxlength="8" style="width:56px;" onclick="PopCalendar('day',bpdadt1,bpdadt1,'yyyymmdd');" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bpdadt2.select(); bpdadt2.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
-						<img src="/2020/images/calendar.gif" style="width:16px;height:16px;" Onclick="PopCalendar('day',bpdadt1,bpdadt1,'yyyymmdd');" alt="▦"> ~
-						<input type="text" name="bpdadt2" id="bpdadt2" value="20230310" maxlength="8" style="width:56px;" onclick="PopCalendar('day',bpdadt2,bpdadt2,'yyyymmdd');" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bpdano1.select(); bpdano1.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
-						<img src="/2020/images/calendar.gif" style="width:16px;height:16px;" Onclick="PopCalendar('day',bpdadt2,bpdadt2,'yyyymmdd');" alt="▦">
-					</td>
-					<td class="opt_name">지시번호</td>
-					<td colspan="3">
-						<input type="text" name="bpdano1" value="0000" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bpdano1,4,bpdano2,'Y');"> ~
-						<input type="text" name="bpdano2" value="9999" maxlength="4" style="width:32px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bpdano1,4,bpdano2,'[지시번호]',bpdano2,'Y');">
-					</td>
-					<td class="opt_name">송장구분</td>
-					<td >
-						<input type="radio" name="invprt" value="T" checked >전체
-						<input type="radio" name="invprt" value="1" >인쇄전
-						<input type="radio" name="invprt" value="2" >인쇄후
-					</td>
-				</tr>
-				<tr style="height:24px;">
-					<td class="opt_name" style="background:#FFFF00;">지시일자</td>
-					<td style="background:#FFFF00;">
-						<input type="text" name="bpdadt" id="bpdadt" value="20230310" maxlength="8" style="width:56px;" onclick="PopCalendar('day',bpdadt,bpdadt,'yyyymmdd');" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bpdadt2.select(); bpdadt2.focus(); }" onBlur="this.className='adb'" onFocus="this.className='adf'">
-						<img src="/2020/images/calendar.gif" style="width:16px;height:16px;" Onclick="PopCalendar('day',bpdadt,bpdadt,'yyyymmdd');" alt="▦">
-					</td>
-					<td class="opt_name" style="background:#FFFF00;">지시번호</td>
-					<td style="background:#FFFF00;" id="_bpdano"></td>
-					<td class="opt_name" style="background:#FFFF00;">취소사유</td>
-					<td style="background:#FFFF00;">
-						<input  type="text" name="bremrk" value="" maxLength="100" style="ime-mode:active;width:140px;" onFocus="this.className='adf'" onBlur="this.className='adb';" onKeyup="CheckBnotxt(this); CheckBytes(this,100);">
-					</td>
-					<td class="opt_name" style="background:#C6C6FF;">
-						<select name="findgu" onBlur="this.className='adb'" onFocus="this.className='adf'">
-							<option value="Ordnum" selected >주문검색</option>
-							<option value="Bprtno" >송장검색</option>
-						</select>
-					</td>
-					<td style="background:#C6C6FF;">
-						<input  type="text" name="ordnum" value="" maxLength="30" style="ime-mode:active;width:180px;" onKeyup="if(event.keyCode==13) SearchOrdnum();" onFocus="this.className='adf'" onBlur="this.className='adb';" onKeyup="CheckBnotxt(this); CheckBytes(this,20);">(Enter)
-					</td>
-				</tr>
+				</tr>				
 			</table>
 			</form>
 		</td>
@@ -629,37 +218,48 @@ function Bcheck() {
 <table style="width:1190px;float:left;" class="outbar">
 	<tr style="height:20px;">
 		<td style="width:020px;text-align:left;padding-left:5px;" rowspan="2"><input type="checkbox" name="allchk" value="1" style="zoom:1.2;" onClick="iresult.SelectAll();" disabled ></td>
-		<td colspan="5">의뢰정보</td>
-		<td style="width:060px;" rowspan="2">주소오류<br><img src="/2020/images/br_excel.png" onClick="Downad();" style="cursor:pointer;"></td>
+		<td colspan="5">가가가가</td>
+		<td style="width:060px;" rowspan="2">가가가가<br><img src="/2020/images/br_excel.png" onClick="Downad();" style="cursor:pointer;" alt="excel down"></td>
 		<td style="width:020px;text-align:left;padding-left:5px;" rowspan="2"><input type="checkbox" name="ordchk" value="1" style="zoom:1.2;" onClick="iresult.SelectTotal('ordchk');" disabled ></td>
-		<td colspan="5">지시정보</td>
-		<td colspan="6">출고정보</td>
-		<td colspan="3">송장</td>
+		<td colspan="5">가가가가</td>
+		<td colspan="6">가가가가</td>
+		<td colspan="3">가가</td>
 	</tr>
 	<tr style="height:20px;">
-		<td                     >매장코드(명)</td>
-		<td style="width:075px;">의뢰일자</td>
-		<td style="width:030px;">번호</td>
-		<td style="width:060px;">출고구분</td>
-		<td style="width:030px;">수량</td>
-		<td style="width:075px;">지시일자</td>
-		<td style="width:030px;">번호</td>
-		<td style="width:035px;">시간</td>
-		<td style="width:030px;">박스</td>
-		<td style="width:030px;">인쇄</td>
-		<td style="width:035px;">피킹</td>
-		<td style="width:075px;">출고일자</td>
-		<td style="width:035px;">번호</td>
-		<td style="width:030px;">수량</td>
-		<td style="width:040px;">출고율</td>
-		<td style="width:030px;">마감</td>
-		<td style="width:130px;">송장번호</td>
+		<td                     >가가가가</td>
+		<td style="width:075px;">가가가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:060px;">가가가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:075px;">가가가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:035px;">가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:035px;">가가</td>
+		<td style="width:075px;">가가가가</td>
+		<td style="width:035px;">가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:040px;">가가</td>
+		<td style="width:030px;">가가</td>
+		<td style="width:130px;">가가</td>
 		<td style="width:020px;text-align:left;padding-left:5px;"><input type="checkbox" name="delchk" value="1" style="zoom:1.2;" onClick="iresult.SelectAllchk('delchk');" disabled ></td>
-		<td style="width:055px;">배송상태</td>
+		<td style="width:055px;">가가가가</td>
 	</tr>
+</table>
+</form>
+<iframe style="margin-top:1px; width:1207px; min-height:400px; border:none;" onload="" src="sample_R.html" name="iresult" id="iresult"></iframe>
+
+<script>
+function resizeR() { resizeIframe("myframe","bar_sum",100); }
+window.onresize = function() { resizeR(); }
+resizeR();
+</script>
+
+<table style="width:1190px;float:left;" class="outbar">
 	<tr style="height:20px;" class="sumbar">
 		<td ></td>
-		<td style="text-align:center;">합계</td>
+		<td style="text-align:center;">라라</td>
 		<td ></td>
 		<td ></td>
 		<td ></td>
@@ -682,29 +282,15 @@ function Bcheck() {
 		<td ></td>
 	</tr>
 </table>
-</form>
 
-<div style="clear:left;"><iframe name="iresult" id="iresult" frameborder="0" style="width:1207px;"></iframe></div>
+<p style="height:20px;padding:0;margin:0;">■ 라라라라라라라라라라라라라라라라라라라라라라</p>
+<p style="height:20px;padding:0;margin:0;">■ 라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라</p>
+<p style="height:20px;padding:0;margin:0;">■ 라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라</p>
+<p style="height:20px;padding:0;margin:0;">■ 라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라라</p>
 
-<script>
-<!--
-function iresize() {
-	document.getElementById('iresult').height = (document.documentElement.clientHeight - document.getElementById('iresult').offsetTop - 95) + 'px';
-}
-window.onresize = iresize;
-//-->
-</script>
-
-<p style="height:20px;padding:0;margin:0;">■ 온라인 업무흐름 : 출고지시 > 출력(prt) > 피킹 > 운송장출력</p>
-<p style="height:20px;padding:0;margin:0;">■ 의뢰체크박스 : [의뢰취소] [출고지시] &nbsp;&nbsp;■ 지시체크박스 : [지시취소] [출력(prt)] [인쇄취소] [송장출력] &nbsp;&nbsp;■ 송장체크박스 : [송장취소]</p>
-<p style="height:20px;padding:0;margin:0;">■ 각 취소처리는 다음 업무 미진행시 가능</p>
-<p style="height:20px;padding:0;margin:0;">■ [출력(xls)] : 사방넷 업로드자료 다운, <b>창고구분</b>/<b>지시일자</b>/<b>지시번호</b>/<b>송장구분</b> 조건으로 출력</p>
-
-
-	<div style="clear:left;"><iframe name="BF1340J_P" frameborder="1" style="width:700px;height:200px;"></iframe></div>
-	<div style="clear:left;"><iframe name="BF1340P"   frameborder="1" style="width:700px;height:200px;"></iframe></div>
-	<div style="clear:left;"><iframe name="BF1340J_E" frameborder="1" style="width:700px;height:200px;"></iframe></div>
-
+	<div style="clear:left;"><iframe name="aaaaa" style="border: 1px solid #000;width:700px;height:200px;"></iframe></div>
+	<div style="clear:left;"><iframe name="bbbbb" style="border: 1px solid #000;width:700px;height:200px;"></iframe></div>
+	<div style="clear:left;"><iframe name="ccccc" style="border: 1px solid #000;width:700px;height:200px;"></iframe></div>
 
 </body>
 </html>
