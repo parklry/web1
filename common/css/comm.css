@@ -228,6 +228,18 @@ input[type="checkbox"] {
 	height: 25px;
 	vertical-align: top;
 }
+.btnbar button {
+	float: right;
+}
+
+/* 프로그램명d 속성 */
+.pname {
+	float: left;
+	inline-height: 25px;
+	margin-right: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}
 
 /* 옵션바 */
 .optbar { 
@@ -321,16 +333,6 @@ input[type="checkbox"] {
 
 /* pid 속성 */
 .pid {
-	float: left;
-	inline-height: 25px;
-	margin-right: 5px;
-	font-size: 16px;
-	font-weight: bold;
-	text-align: center;
-}
-
-/* 프로그램명d 속성 */
-.pname {
 	float: left;
 	inline-height: 25px;
 	margin-right: 5px;
