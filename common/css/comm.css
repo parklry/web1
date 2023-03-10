@@ -247,8 +247,10 @@ input[type="checkbox"] {
 }
 .optbar td { 
 	border: 1px #999999 solid; 
+	padding-left: 1px;
 }
 .opt_name { 
+	padding-left: 0px;
 	font-weight: bold; 
 	text-align: center;
 	width: 80px;
