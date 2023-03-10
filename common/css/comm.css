@@ -87,11 +87,7 @@ select {
 	border-top:   #999999 1px solid; 
 }
 
-select, input {
-	margin-left: 1px;
-	vertical-align: middle;
-}
-img {
+input, select, img, checkbox, radio {
 	vertical-align: middle;
 }
 
