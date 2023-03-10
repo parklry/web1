@@ -1,3 +1,10 @@
+// iframe 크기 자동 조절
+function resizeIframe(iframe,sumbar,subadd) {
+    const win_height = window.innerHeight;
+    const bar_height = document.getElementById(sumbar).clientHeight;
+    document.getElementById(iframe).style.height = (win_height - document.getElementById(iframe).getBoundingClientRect().top - bar_height - subadd) + 'px';
+}
+
 // 펼치기,닫기
 function Tree(currMenu) {
 	thisMenu = eval(currMenu + ".style");
