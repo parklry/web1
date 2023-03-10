@@ -44,12 +44,6 @@ function Search() {
 }
 
 function SearchSubmit() {
-	_ButtonForm.Btn_Select.innerText = '전체의뢰선택';
-	_CheckForm.allchk.checked = false;
-	_ButtonForm.Btn_Selord.innerText = '전체지시선택';
-	_CheckForm.ordchk.checked = false;
-	_CheckForm.delchk.checked = false;
-
 	_TableForm.action = 'sample1_R.jsp';
 	_TableForm.target = 'iresult';
 	_TableForm.submit();
