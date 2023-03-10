@@ -149,7 +149,7 @@ input[type="checkbox"] {
 	border-top:   #000000 1px solid; 
 }
 
-.table_btn { width:100%; background-color:#3971ae; border:#999999 solid 1px; border-bottom:none; }
+.table_btn { width:100%; background-color:#fff; border:#999999 solid 1px; border-bottom:none; }
 .table_btn th { height:30px; font-weight:bold; color:#ffffff; text-align:left; padding-left:2px; }
 .table_btn td { padding-left:2px; }
 
