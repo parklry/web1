@@ -31,13 +31,10 @@ function New() {
 
 function CheckOrdtyp() {
 	if(_TableForm.ordtyp[2].checked) {
-		_TableForm.bpdano1.disabled = false;
-		_TableForm.bpdano2.disabled = false;
 		_TableForm.bfwymd1.select();
 		_TableForm.bfwymd1.focus();
 	} else {
-		_TableForm.bpdano1.disabled = true;
-		_TableForm.bpdano2.disabled = true;
+
 	}
 }
 
