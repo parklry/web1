@@ -17,6 +17,7 @@ table {
 }
 
 /* 작업버튼 */
+/*
 button {
 	display: inline-block;
 	float: left;
@@ -29,6 +30,51 @@ button {
 	cursor: pointer;
 	white-space: nowrap;
 	outline: 0;
+}
+*/
+button {
+    display: inline-block;
+    float: left;
+    height: 22px;
+    margin: 0px 3px 0px 0px;
+    padding: 0px 3px;
+
+    background-color: #008CBA;
+    color: #fff;
+    border: 1px solid #008CBA;
+    border-radius: 5px;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: black;
+    transition: 0.7s;
+}
+
+button:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 1px #000;
+    transition: 0.7s;
+}
+
+button:active {
+    background-color: #ffffff;
+}
+
+button:disabled {
+    background-color: #008CBA;
+    color: black;
+    cursor: not-allowed;
+    opacity: 0.65;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
 
 /* select 개체 */
