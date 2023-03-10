@@ -226,7 +226,6 @@ input[type="checkbox"] {
 }
 .btnbar td { 
 	height: 25px;
-	vertical-align: top;
 }
 .btnbar button {
 	float: right;
