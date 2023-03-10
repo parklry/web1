@@ -269,14 +269,12 @@ input[type="checkbox"] {
 
 /* 출력바 */
 .outbar { 
-	color: #fff; 
-	background-color: #4F81BD; 
+	background-color: #dfdfdf; 
 	border: 1px #000000 solid; 
 	margin-bottom: 1px;
 	text-align: center;
 }
 .outbar td { 
-	color: #fff; 
 	border: 1px #999999 solid; 
 }
 .outbar td A:link { color: #fff; }
@@ -284,7 +282,8 @@ input[type="checkbox"] {
 .outbar td A:hover { color: red; }
 
 /* 전체합계 */
-.sumbar { background-color: #366092; color: #fff; }
+.sumbar { background-color: #dfdfdf; }
+
 /* 요약3 */
 .sum3 { 
 	color: #000; 
@@ -306,6 +305,7 @@ input[type="checkbox"] {
 	border: 1px #999999 solid; 
 	margin-bottom: 1px;
 }
+
 /* 상세 */
 .detail { 
 	color: #000; 
