@@ -1,21 +1,29 @@
-* {
-    margin: 0; 
-    padding: 0; 
+/* Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: middle;
     font-size: 12px;
-    font-family: 굴림체,tahoma,verdana,ms sans serif,courier new;
-	box-sizing: border-box;
+    font-family: 돋움체,굴림체,sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Box Model */
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* 공통적용 링크 */
 a:link    { color: #0000FF; text-decoration: underline }
 a:visited { color: #0000FF; text-decoration: none }
 a:hover   { color: red;     text-decoration: underline }
-
-table {
-	border-spacing: 0px;
-	border-collapse: collapse;
-	border: 0;
-}
 
 /* 작업버튼 */
 /*
