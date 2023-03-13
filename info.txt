@@ -15,3 +15,10 @@ https://validator.w3.org/unicorn/
 
 버튼
 https://homzzang.com/b/css-191
+
+캐쉬방지
+reponse.setHeader("Pragma","no-cache"); // HTTP1.0 캐쉬방지
+reponse.setDateHeader("Expires",0); // proxy 서버의 캐쉬방지
+reponse.setHeader("Pragma","no-store"); // HTTP1.1 캐쉬방지
+if(request.getProtocol().equals("HTTP/1.1"))
+    reponse.setHeader("Cache-Control","no-cache"); // HTTP1.1 캐쉬방지
