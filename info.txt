@@ -24,4 +24,7 @@ if(request.getProtocol().equals("HTTP/1.1"))
     reponse.setHeader("Cache-Control","no-cache"); // HTTP1.1 캐쉬방지
 
 PS_NO = `ps -ef | grep aa | grep bb | bfep -v aaa | awk '{ print $2 }'`
-kill $PS_NO
+PS_CNT = `ps -ef | grep aa | grep bb | bfep -v aaa | wc | awk '{ print $1 }'`
+if [ PS_CNT > 0 ]; then
+    kill $PS_NO
+fi
