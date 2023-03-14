@@ -1,7 +1,11 @@
 // iframe 크기 자동 조절
 function resizeIframe(iframe,sumbar,subadd) {
-    const win_height = window.innerHeight;
-    const bar_height = document.getElementById(sumbar) ? document.getElementById(sumbar).clientHeight : 0;
+    if (navigator.userAgent.indexOf("MSIE 8.0")!=-1) {
+    var win_height = document.documentElement.clientHeight;
+    } else {
+    var win_height = window.innerHeight;
+    }
+    var bar_height = document.getElementById(sumbar) ? document.getElementById(sumbar).clientHeight : 0;
     document.getElementById(iframe).style.height = (win_height - document.getElementById(iframe).getBoundingClientRect().top - bar_height - subadd) + 'px';
 }
 
@@ -117,18 +121,18 @@ function ClearBookmark() {
 }
 
 //메세지
-function SetMessage(s) {
-	if(trim(s) != '') alert(s);
-}
+//function SetMessage(s) {
+//	if(trim(s) != '') alert(s);
+//}
 
 //메세지 t 1:alert, 2:message, 3:all
 function SetMessage(m,t) {
 	if(parent.parent.document.getElementById('message') != null && (t == undefined || t == 2 || t == 3)) {
-		parent.parent.message.SetMessage(m);
+		parent.parent.message.SetMessage(m.replace(/<br>/gi, ' '));
 	}
 	if(parent.parent.document.getElementById('message') == null || t == 1 || t == 3) {
 		if(trim(m) != '') {
-			alert(m);
+			alert(m.replace(/<br>/gi, '\n'));
 		}
 	}
 }
