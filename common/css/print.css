@@ -11,5 +11,6 @@
     table { page-break-inside: auto; }
     tr { page-break-inside: avoid; page-break-after: auto; }
     @page { margin: 0; } /* 머리글과 바닥글 비노출 */
-    body { margin: 1.6cm; }
+    /* body { margin: 0.5cm; } */
+    .noprint { display:none; }
 }
