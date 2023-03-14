@@ -1,0 +1,233 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>(쿠팡)출고자료다운</title>
+<script src="/common/js/jquery.min.js?v=1678803215678"></script>
+<link href="/common/css/jquery-ui.css?v=1678803215678" rel="stylesheet">
+<script src="/common/js/jquery-ui.js?v=1678803215678"></script>
+<link href="/common/css/comm.css?v=1678803215678" rel="stylesheet">
+<script src="/common/js/comm.js?v=1678803215678"></script>
+<script src="/common/js/AllCheck.js?v=1678803215678"></script>
+<script>
+<!--
+function New() {
+    SetMessage('');
+
+	
+		_TableForm.btnlst.value += '_ButtonForm.Btn_Bexcel';
+	
+		_TableForm.btnlst.value += '|_ButtonForm.Btn_Iprint';
+	
+		_TableForm.btnlst.value += '|_ButtonForm.Btn_Pprint';
+	
+		_TableForm.btnlst.value += '|_ButtonForm.Btn_Search';
+	
+		_TableForm.btnlst.value += '|_ButtonForm.Btn_Select';
+	
+		_TableForm.btnlst.value += '|_ButtonForm.Btn_Bcfmgu';
+	
+    SetButton(_TableForm.btnlst.value,'1|1|1|1|0|0');
+}
+
+function Search() {
+	SetMessage('');
+
+	_TableForm.bcondi.value = 'Search';
+	if(!Bcheck()) { return false; }
+
+	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
+	SetMessage('[조회] 처리중...');
+
+	//SearchSubmit();
+}
+
+function SearchSubmit() {
+	_ButtonForm.Btn_Select.innerText = '전체선택';
+
+	_TableForm.action = '../BD0000J/BD1520J_R.jsp';
+	_TableForm.target = 'iresult';
+	LoadingStart();
+	_TableForm.submit();
+}
+
+function Bcfmgu() {
+	SetMessage('');
+
+	_TableForm.bcondi.value = 'Bcfmgu';
+	if(!Bcheck()) { return false; }
+
+    var result = iresult.getResult(_TableForm.bcondi.value);
+	if(result.length == 0) {
+		SetMessage('[선택]된 자료가 없습니다.');
+		return false;
+	}
+
+	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
+	SetMessage('[확정] 처리중...');
+
+	with(BF1340J_P) {
+		document.open();
+		document.write('<form name="_SubmitForm" method="POST" action="../BD0000J/BD1520J_P.jsp" target="BD1520J_P" accept-charset="euc-kr" >\n');
+		document.write(result);
+		document.write('</form>');
+		document.close();
+	}
+	LoadingStart();
+	BF1340J_P.document.charset = 'euc-kr';
+	BF1340J_P._SubmitForm.submit();
+}
+
+function Bexcel() {
+	SetMessage('');
+
+	_TableForm.bcondi.value = 'Bexcel';
+	if(!Bcheck()) { return false; }
+	
+	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
+	SetMessage('[업로드리스트(xlsx)] 다운 처리중...');
+
+	_TableForm.action = '../BD0000J/BD1520J_xlsx.jsp';
+	_TableForm.target = 'BD1520J_E';
+   	DownStart();
+	_TableForm.submit();
+}
+
+function Bprint(gubun) {
+    SetMessage('');
+	_TableForm.bcondi.value = gubun+'print';
+	if(!Bcheck()) { return false; }
+	
+	_TableForm.btnset.value = OffButton(_TableForm.btnlst.value);
+	SetMessage('['+(gubun=='1'?'박스별상품리스트(prt)':'파렛트별상품리스트(prt)')+'] 다운 처리중...');
+
+	_TableForm.action = '../BD0000J/BD1520J_prt'+gubun+'.jsp';
+	_TableForm.target = 'BD1520J_D';
+   	LoadingStart();
+	_TableForm.submit();
+}
+
+function Bcheck() {
+    if(!DateCheck(_TableForm.bdlymd1,8,'[출고일자1]')) { return false; }
+    if(!DateCheck(_TableForm.bdlymd2,8,'[출고일자2]')) { return false; }
+    if(!StrCompare(_TableForm.bdlymd1,_TableForm.bdlymd2,_TableForm.bdlymd2,'[출고일자]')) { return false; }
+    if(!IntCheck(_TableForm.bdliss1,'[출고번호1]')) { return false; }
+    if(!IntCheck(_TableForm.bdliss2,'[출고번호2]')) { return false; }
+    if(!IntCompare(_TableForm.bdliss1,_TableForm.rbdliss2,_TableForm.bdliss2,'[출고번호]')) { return false; }	
+    if(!StrCheck(_TableForm.bhopcd1,5,'[매장코드1]')) { return false; }
+    if(!StrCheck(_TableForm.bhopcd2,5,'[매장코드2]')) { return false; }
+    if(!StrCompare(_TableForm.bhopcd1,_TableForm.bhopcd2,_TableForm.bhopcd2,'[매장코드]')) { return false; }
+
+	return true;
+}
+//-->
+</script>
+</head>
+
+<body onLoad="New();" class="bodyj">
+<div style="width:780px;" class="topbar">
+<form name="_ButtonForm" onsubmit="return false;">
+<table class="btnbar width100p">
+    <tr>
+        <td>
+            <div class="pname">(쿠팡)출고관리</div>
+        </td>
+        <td>
+            <div class="btngrp">
+            
+            <button name="Btn_Bexcel" onClick="Bexcel();">업로드리스트(xlsx)</button>
+            
+            <button name="Btn_Iprint" onClick="Bprint('1');">박스별상품(prt)</button>
+            
+            <button name="Btn_Pprint" onClick="Bprint('2');">파렛트별상품(prt)</button>
+            
+            <button name="Btn_Search" onClick="Search();">조회</button>
+            
+            <button name="Btn_Select" onClick="iresult.SelectAll();">전체선택</button>
+            
+            <button name="Btn_Bcfmgu" onClick="Bcfmgu();">확정</button>
+            
+            </div>
+        </td>
+    </tr>
+</table>
+</form>
+<form name="_TableForm" method="POST" onsubmit="return false;">
+    <input type="hidden" name="btnlst" value="">
+    <input type="hidden" name="btnset" value="">
+    <input type="hidden" name="bcondi" value="">
+    <input type="hidden" name="cookid" value="20230314">
+<div class="optbar">
+<table class="width100p">
+    <tr>
+        <th>출고일자</th>
+        <td>
+            <input type="text" name="bdlymd1" id="bdlymd1" value="20230314" maxlength="8" style="width:60px;" autocomplete="off" placeholder="YYYYMMDD" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bdlymd2.select(); bdlymd2.focus(); }"> ~
+            <input type="text" name="bdlymd2" id="bdlymd2" value="20230314" maxlength="8" style="width:60px;" autocomplete="off" placeholder="YYYYMMDD" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyUp="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; if(this.value.length==8) { bhopcd1.select(); bdliss1.focus(); }">
+            <script>
+            $(function() {
+                $( "#bdlymd1" ).datepicker();
+                $( "#bdlymd2" ).datepicker();
+            });                        
+            </script>
+        </td>
+        <th>발행번호</th>
+        <td>
+            <input type="text" name="bdliss1" value="00000" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bdliss1,5,bdliss2,'Y');"> ~
+            <input type="text" name="bdliss2" value="99999" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bdliss1,5,bdliss2,'[발행번호]',bhopcd1,'Y');">
+        </td>
+        <th>매장코드</th>
+        <td>
+            <input type="text" name="bhopcd1" value="27709" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField1(bhopcd1,5,bhopcd2,'Y');"> ~
+            <input type="text" name="bhopcd2" value="27709" maxlength="5" style="width:40px;" onBlur="this.className='adb'" onFocus="this.className='adf'" onKeyup="if(event.keyCode==0||event.keyCode==9||event.keyCode==16) return; CheckField2(bhopcd1,5,bhopcd2,'[매장코드]',bhopcd2,'Y');">
+        </td>
+    </tr>
+    <tr>
+        <th>확정구분</th>
+        <td>
+            <input type="radio" name="bcfmgu" value="T" checked >전체
+            <input type="radio" name="bcfmgu" value="">미확정
+            <input type="radio" name="bcfmgu" value="*">확정
+        </td>
+        <th >자료다운</th>
+        <td colspan="3">
+            <input type="radio" name="downgu" value="1" checked >쉽먼트
+            <input type="radio" name="downgu" value="2">밀크런
+        </td>
+    </tr>
+</table>
+</div>
+</form>
+</div>
+
+<table style="width:780px;" class="outbar">
+    <tr>
+        <td >□</td>
+        <td style="width:100px;">출고일자</td>
+        <td style="width:100px;">물류센터</td>
+        <td style="width:100px;">출고번호</td>
+        <td style="width:100px;">출고수량</td>
+        <td style="width:100px;">확정</td>
+        <td style="width:100px;">마감</td>
+        <td style="width:100px;"></td>
+    </tr>
+</table>
+
+
+    <div style="clear:left;"><iframe name="BD1520J_E" style="border:1px solid #000;width:700px;height:100px;"></iframe></div>
+    <div style="clear:left;"><iframe name="BD1520J_D" style="border:1px solid #000;width:700px;height:300px;"></iframe></div>
+
+
+</body>
+</html>
