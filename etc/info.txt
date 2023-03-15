@@ -1,0 +1,9 @@
+좀비프로세스
+https://coconuts.tistory.com/787
+	좀비 찾기
+-	ps -ef | grep defunct | grep -v grep
+	좀비 프로세스 건수 확인
+-	top -b -n 1 | grep zombie
+-	ps -ef | grep defunct | grep -v grep | wc -l
+	좀비 프로세스 종료
+-	ps -ef | grep defunct | awk '{print $3}' | xargs kill -9
