@@ -13,3 +13,4 @@ CommUtil.java
 일자 -,.
 format
 
+input : place~~
