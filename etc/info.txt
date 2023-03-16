@@ -7,3 +7,9 @@ https://coconuts.tistory.com/787
 -	ps -ef | grep defunct | grep -v grep | wc -l
 	좀비 프로세스 종료
 -	ps -ef | grep defunct | awk '{print $3}' | xargs kill -9
+
+
+CommUtil.java
+일자 -,.
+format
+
