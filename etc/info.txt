@@ -14,3 +14,5 @@ CommUtil.java
 format
 
 input : place~~
+
+함수명, 변수명 ~~
