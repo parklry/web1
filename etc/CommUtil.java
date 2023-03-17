@@ -25,7 +25,11 @@ public clas CommUtil {
     getDispHms(code,strGubn) 6,4
     public static final String dateFormat(String inStr, char delim) {
     }
-    
+//static은 "고정된" 이라는 의미
+//객체 생성 없이 사용할 수 있는 필드와 메소드를 생성하고자 할 때 활용한다.
+// aa = new aaa(); 없이 사용가능
+// 클래스명.매소드
+  
 /**
  * 문자열의 바이크 길이 구하기
  * 인코딩 문자셋에 따라 바이크 길이 달라짐.
