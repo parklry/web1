@@ -23,6 +23,8 @@ public clas CommUtil {
     10:10
     getDispYmd(code,strGubn) 8,6 
     getDispHms(code,strGubn) 6,4
+    public static final String dateFormat(String inStr, char delim) {
+    }
     
 /**
  * 문자열의 바이크 길이 구하기
