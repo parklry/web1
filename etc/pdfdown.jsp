@@ -20,6 +20,7 @@ import java.text.DecimalFormat;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
+// itext-2.1.7.jar, itextasian-2.1.7.jar
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
