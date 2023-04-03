@@ -38,3 +38,22 @@ PS_CNT = `ps -ef | grep aa | grep bb | bfep -v aaa | wc | awk '{ print $1 }'`
 if [ PS_CNT > 0 ]; then
     kill $PS_NO
 fi
+
+public static String getCutStr(String str, int cut) throws UnsupportedEncodingException {
+		String returnValue;
+		if(str==null || str.equals("")){
+			str=null;
+			return str;
+		}
+		if (str.getBytes("KSC5601").length  cut) {
+		    returnValue = new String(str.getBytes("KSC5601"), 0, cut, "KSC5601");
+		    if (str.indexOf(returnValue)  0) {
+			returnValue = new String(str.getBytes("KSC5601"), 0, cut - 1, "KSC5601");
+		    }
+		    returnValue = returnValue + "..";
+		} else {
+		    returnValue = str;
+		}
+
+		return returnValue;
+	}
