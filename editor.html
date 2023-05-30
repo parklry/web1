@@ -1,0 +1,74 @@
+<script src="/common/se2/js/HuskyEZCreator.js"></script>
+
+            <table style="width:100%;border-bottom:#fff solid 1px;background:#D8E0EB;">
+                <tr>
+                    <td style="width:100px;text-align:right;background:#B5C7E1;font-weight:bold;">내용&nbsp;</td>
+                    <td style="padding-left:3px;padding-top:3px;">
+                        <div id="smarteditor">
+                        <textarea name="editorTxt" id="editorTxt"
+                                  placeholder="내용을 입력해주세요"
+                                  style="width:680px;height:350px;"></textarea>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+<script>
+<!--
+var oEditors = [];
+smartEditor = function() {
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "editorTxt",
+        sSkinURI: "/common/se2/SmartEditor2Skin.html",
+        htParams : {
+        //    // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+        //    bUseToolbar : true,
+        //    // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+        //    bUseVerticalResizer : true,
+        //    bUseModeChanger : true,
+            // 폰트추가
+            aAdditionalFontList : [["Malgun Gothic","맑은 고딕"], ["Noto Sans KR","Noto Sans"]],
+            // 기본 글꼴 설정
+            //SE2M_FontName: { htMainFont: {'id': 'Noto Sans KR','name': 'Noto Sans KR', 'url': '','cssUrl': ''}}, 
+        //    // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+        //    fOnBeforeUnload : function(){
+        //
+        //    }
+        },
+        fOnAppLoad : function() {
+        //    //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+            oEditors.getById["editorTxt"].exec("PASTE_HTML", ["<%= temp_bcontn %>"]);
+        //    oEditors.getById['contents'].setDefaultFont( "Malgun Gothic", 11);  // 기본 글꼴 설정 추가
+        },
+        fCreator: "createSEditor2"
+    });
+}
+
+$(document).ready(function() {
+    smartEditor();
+    New();
+})
+
+/*
+submitPost = function() {
+    oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);
+    var content = document.getElementById("editorTxt").value;
+
+    if(content == '') {
+        alert("내용을 입력해주세요.");
+        oEditors.getById["editorTxt"].exec("FOCUS");
+        return;
+    } else {
+        _SubmitForm.bsubjt.value = _TableForm.title.value;
+        _SubmitForm.bcontn.value = content;
+        _SubmitForm.action = 'BZ_Write_N2_P.jsp';
+        _SubmitForm.target = 'BZ_Write_N2_P';
+        _SubmitForm.submit();
+
+        //alert(_SubmitForm.bcontn.value.length);
+    }
+}
+*/
+//-->
+</script>
