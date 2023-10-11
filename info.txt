@@ -1,3 +1,5 @@
+Software\Policies\Google\ChromeOS\PrintingAPIExtensionsAllowlist
+
 웹인쇄
 https://nenara.com/155
 
