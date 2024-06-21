@@ -1,3 +1,6 @@
+https://dashboard.tosspayments.com/receipt/sales-slip?transactionId=YxHwn5Ad9Ttw3OK1%2Fk815r8HJHI9N0C9%2BI8UqUG1hBB6lvhoXU6lis5LxwA8XVyF&ref=payments-manager-api
+https://dashboard.tosspayments.com/receipt/sales-slip?transactionId=wLCWQFugEexQiPX04tDdZe41BBIK90Hep47d3ewUyaXolre%2BcneyEhe7QHNWSJTf&ref=legacy-merchant-api
+
 Software\Policies\Google\ChromeOS\PrintingAPIExtensionsAllowlist
 
 웹인쇄
